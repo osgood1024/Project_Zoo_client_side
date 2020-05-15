@@ -8,8 +8,20 @@ const Styles =styled.div `
 .navbar{
     height: 100px;
     background-color: #222;
+    padding: 8px 40px 8px 20px;
+}
+// .form-inline {
+//     margin: auto 10%;
+//     width: 40%;
+// }
+.form-control {
+    border-radius: 15px;
+}
+.button{
+    border-radius: 50px;
 }
 .navbar-brand, .navbar-nav .nav-link{
+    padding: 20px;
     color: #FF8C00;
     &:hover{
         color: white;
@@ -25,8 +37,8 @@ export const NavigationBar=(props)=>(
             <Navbar.Brand href="/">(brand logo)</Navbar.Brand>
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
             <Form inline>
-                <FormControl type="text" placeholder="Search your supply" className="mr-sm-2" value={props.search} onChange={props.searchterm}/>
-                <Button variant="outline-success">Search</Button>
+                <FormControl type="text" placeholder="Search Project" className="mr-sm-2" value={null} onChange={null}/>
+                <Button className="rounded-pill" variant="outline-success">Search</Button>
             </Form>
             <Navbar.Collapse id ="basic-navbar-nav">
                 <Nav className="ml-auto">
