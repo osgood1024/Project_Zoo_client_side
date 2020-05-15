@@ -1,42 +1,36 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import {Home} from '/Home';
-import {Favorite} from '/Favorite';
-import {SubmitProject} from '/SubmitProject';
-import {Layout} from './components/Layout';
-import {Nav} from './components/Nav';
-import {Jumbotron} from './components/Jumbotron';
-import {Login} from './Login';
+import React,{Component} from 'react';
+import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
+import { Home } from './Home';
+import { Favorite } from './Favorite';
+import { SubmitProject } from './SubmitProject' ;
+import { LogIn } from './components/LogIn' ;
+import { Layout } from './components/Layout';
+import {NavigationBar} from './components/NavigationBar';
 
 
 
 
-// import './App.css';
-
-class App extends Component() {
-
-
+class App extends Component{
   render(){
-
-    return (
-     <React.Fragment>
-       <Nav/>
-       <Jumbotron/>
-       <Layout>
-       <Router>
-         <Switch>
-           <Route exact path="/" component={Home}/>
-          <Route path="/submitproject" component={SubmitProject}/>
-           <Route path="/favorite" component={Favorite}/>
-           <Route path="/login" component={Login}/>
-         </Switch>
-       </Router>
-       </Layout>
-
-     </React.Fragment>
-    );
-    
+    return(
+      <React.Fragment>
+        <NavigationBar/>
+        <Layout>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/favorite" component={Favorite}/>
+              <Route path="/submitproject" component={SubmitProject}/>
+              <Route path="/login" component={LogIn}/>
+            </Switch>
+          </Router>
+        </Layout>
+        
+      </React.Fragment>
+     
+    )
   }
+
 }
 
 export default App;
