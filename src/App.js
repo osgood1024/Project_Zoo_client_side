@@ -11,14 +11,28 @@ import {NavigationBar} from './components/NavigationBar';
 
 
 class App extends Component{
+  state={
+    projects:[]
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/projects')
+    .then(resp => resp.json())
+    .then(data => this.setState({
+        projects: data
+      })
+    )
+  }
+
   render(){
+    console.log(this.state)
     return(
       <React.Fragment>
         <NavigationBar/>
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home}/>
+              <Route exact path="/home" component={Home}/>
               <Route path="/favorite" component={Favorite}/>
               <Route path="/submitproject" component={SubmitProject}/>
               <Route path="/login" component={LogIn}/>

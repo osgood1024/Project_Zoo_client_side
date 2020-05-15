@@ -34,7 +34,7 @@ export const NavigationBar=(props)=>(
     
     <Styles>
         <Navbar expand='lg'>
-            <Navbar.Brand href="/">(brand logo)</Navbar.Brand>
+            <Navbar.Brand href="/home">(brand logo)</Navbar.Brand>
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
             <Form inline>
                 <FormControl type="text" placeholder="Search Project" className="mr-sm-2" value={null} onChange={null}/>
