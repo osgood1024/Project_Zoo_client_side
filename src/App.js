@@ -5,14 +5,16 @@ import { Favorite } from './Favorite';
 import { SubmitProject } from './SubmitProject' ;
 import { LogIn } from './components/LogIn' ;
 import { Layout } from './components/Layout';
-import {NavigationBar} from './components/NavigationBar';
+import { NavigationBar } from './components/NavigationBar';
 
 
 
 
 class App extends Component{
   state={
-    projects:[]
+    projects:[],
+    comments:[]
+
   }
 
   componentDidMount(){
@@ -22,17 +24,26 @@ class App extends Component{
         projects: data
       })
     )
+
+
+    fetch('http://localhost:3000/comments')
+    .then(resp=>resp.json())
+    .then(commented => this.setState({
+        comments: commented
+    }))
+  
   }
 
+
+
   render(){
-    console.log(this.state)
     return(
       <React.Fragment>
         <NavigationBar/>
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/home" component={Home}/>
+              <Route exact path="/" render={props=><Home {...props} projects={this.state.projects} comments={this.state.comments} /> }/>
               <Route path="/favorite" component={Favorite}/>
               <Route path="/submitproject" component={SubmitProject}/>
               <Route path="/login" component={LogIn}/>

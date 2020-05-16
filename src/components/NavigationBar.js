@@ -1,5 +1,6 @@
 import React from 'react';
 import {Nav, Navbar,Form, Button, FormControl} from 'react-bootstrap'
+
 import styled from 'styled-components'
 
 
@@ -34,7 +35,7 @@ export const NavigationBar=(props)=>(
     
     <Styles>
         <Navbar expand='lg'>
-            <Navbar.Brand href="/home">(brand logo)</Navbar.Brand>
+            <Navbar.Brand href="/">(Project name)</Navbar.Brand>
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
             <Form inline>
                 <FormControl type="text" placeholder="Search Project" className="mr-sm-2" value={null} onChange={null}/>
@@ -42,6 +43,7 @@ export const NavigationBar=(props)=>(
             </Form>
             <Navbar.Collapse id ="basic-navbar-nav">
                 <Nav className="ml-auto">
+                    <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link href="/submitproject">Submit Project</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link href="/login">Login</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link href="/favorite">Favorite</Nav.Link></Nav.Item>
