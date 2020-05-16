@@ -22,36 +22,40 @@ import CommentList from './CommentList'
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-               
-             <Image src={this.props.project.image} fluid />
-              <p>
-              {this.props.project.description}
-              </p>
-              <p>
-              Like: {this.props.project.like} 
-              </p>
-            <p>
-                Owner:
-            </p>
 
-            <p>
-              <a href = {this.props.project.link} target= "_blank" rel="noopener noreferrer" >
-                Visit Project
-              </a>
+              <p>
+                <Image src={this.props.project.image} fluid />
+              </p>
 
-            </p>
+              <p>
+                {this.props.project.description}
+              </p>
+
+              <p>
+                Like: {this.props.project.like} 
+              </p>
+
+              <p>
+                  Owner:
+              </p>
+
+              <p>
+                <a href = {this.props.project.link} target= "_blank" rel="noopener noreferrer" >
+                  Visit Project
+                </a>
+              </p>
 
 <Container>
           <h4>Discussion</h4>
           
-          <Form.Control as="textarea" rows="3" placeholder="What are your thought in this project..? "/>
+          <Form.Control as="textarea" rows="3" onSubmit={null} placeholder="What are your thought in this project..? "/>
           <br/>
-          <Button variant="outline-dark" type="submit" >Post</Button>
+          <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" >Post</Button>
           <br/>
           <br/>
           <CommentList comments={this.props.comment.map(c => 
           <p> <h5>user name:</h5> {c.content}<hr /> </p> )
-          
+
           }/>
 
 </Container>
