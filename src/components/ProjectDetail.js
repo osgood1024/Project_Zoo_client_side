@@ -1,10 +1,48 @@
 import React, {Component} from 'react'
 import {Modal, Button, Image, ListGroup, ListGroupItem, Form, Col, Container} from 'react-bootstrap';
 import CommentList from './CommentList'
+import Emoji from 'a11y-react-emoji'
 
 
 
  class ProjectDetail extends Component {
+
+  state={
+    likes: this.props.project.like
+  }
+
+  // **PATCH method for updating like button and save it into database**
+
+//   handleClick=()=> {
+//       let project_id= this.props.project.id
+//       let count =  this.state.likes +1
+//       console.log(project_id)
+//     fetch(`http://localhost:3000/projects/${project_id}`,{
+//       method: "PATCH",
+//       headers:{
+//         "content-type" :"application/json",
+//         accepts: "application/json"
+//     },
+//     body: JSON.stringify({
+//         likes: count
+//     })
+//   })
+//     .then(resp => resp.json())
+//     .then(newLikes => this.setState ({
+//       likes: newLikes
+//     })
+//     ) 
+// }
+ 
+
+handleLike=()=>{
+  
+  let countLike= this.state.likes +1
+  this.setState({
+    likes : countLike
+  })
+}
+
 
  
     render(){
@@ -24,15 +62,20 @@ import CommentList from './CommentList'
             <Modal.Body>
 
               <p>
+            <Button style={{margin: '5px'}} onClick={()=> this.handleLike()} variant="outline-dark"> <Emoji symbol="❤"/>Like</Button> <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
+              </p>
+
+              <p>
                 <Image src={this.props.project.image} fluid />
               </p>
 
+      <Container>
               <p>
                 {this.props.project.description}
               </p>
 
               <p>
-                Like: {this.props.project.like} 
+                Like: {this.state.likes} 
               </p>
 
               <p>
@@ -44,6 +87,7 @@ import CommentList from './CommentList'
                   Visit Project
                 </a>
               </p>
+      </Container>
 
 <Container>
           <h4>Discussion</h4>
