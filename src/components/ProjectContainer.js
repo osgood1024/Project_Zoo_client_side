@@ -8,6 +8,8 @@ state={
     setModalShow: false
 }
 
+
+
   setModalClose=()=>{
     this.setState({
         setModalShow: false
@@ -26,6 +28,7 @@ state={
                 </Card.Body>
             </Card> 
                 <ProjectDetail
+                addlikes={this.props.addlikes}
                 project={this.props.project}
                 comment={this.props.comment}
                 show={this.state.setModalShow}

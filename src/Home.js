@@ -9,7 +9,8 @@ export class Home extends React.Component{
     render(){
         return(
             <div>
-               {this.props.projects.map(project =><ProjectContainer key={project.id} project={project} comment={this.props.comments.filter(comment => comment.project_id === project.id)} />)}
+               {this.props.projects.map(project =><ProjectContainer key={project.id} project={project}
+                comment={this.props.comments.filter(comment => comment.project_id === project.id)} addlikes={this.props.addlikes}/>)}
             </div>
         )
     }

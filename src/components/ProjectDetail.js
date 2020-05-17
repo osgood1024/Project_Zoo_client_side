@@ -8,38 +8,45 @@ import Emoji from 'a11y-react-emoji'
  class ProjectDetail extends Component {
 
   state={
-    likes: this.props.project.like
+    likes: this.props.project.like,
+    toggle: false
   }
 
   // **PATCH method for updating like button and save it into database**
 
-//   handleClick=()=> {
-//       let project_id= this.props.project.id
-//       let count =  this.state.likes +1
-//       console.log(project_id)
-//     fetch(`http://localhost:3000/projects/${project_id}`,{
-//       method: "PATCH",
-//       headers:{
-//         "content-type" :"application/json",
-//         accepts: "application/json"
-//     },
-//     body: JSON.stringify({
-//         likes: count
-//     })
-//   })
-//     .then(resp => resp.json())
-//     .then(newLikes => this.setState ({
-//       likes: newLikes
-//     })
-//     ) 
-// }
+  handleClick=()=> {
+      let project_id= this.props.project.id
+      let count =  this.state.likes +1
+
+      // console.log(project_id)
+
+    fetch(` http://localhost:3000/projects/${project_id}`, {
+      method: "PATCH",
+      headers:{
+        "content-type" : "application/json",
+        accept : "application/json"
+    },
+    body: JSON.stringify({
+        like: count
+    })
+  })
+    .then(resp => resp.json())
+    .then(newLikes =>  this.props.addlikes(newLikes)) 
+}
  
 
-handleLike=()=>{
+// handleLike=()=>{
   
-  let countLike= this.state.likes +1
+//   let countLike= this.state.likes +1
+//   this.setState({
+//     likes : countLike
+//   })
+// }
+
+handleToggle=()=>{
   this.setState({
-    likes : countLike
+
+    toggle : !this.state.toggle
   })
 }
 
@@ -62,7 +69,8 @@ handleLike=()=>{
             <Modal.Body>
 
               <p>
-            <Button style={{margin: '5px'}} onClick={()=> this.handleLike()} variant="outline-dark"> <Emoji symbol="❤"/>Like</Button> <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
+            <Button style={{margin: '5px'}} onClick={()=> this.handleClick()} variant="outline-dark" > <Emoji symbol="❤"/>Like </Button> 
+            <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
               </p>
 
               <p>
@@ -75,7 +83,7 @@ handleLike=()=>{
               </p>
 
               <p>
-                Like: {this.state.likes} 
+                Like: {this.props.project.like} 
               </p>
 
               <p>

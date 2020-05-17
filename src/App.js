@@ -11,6 +11,8 @@ import { NavigationBar } from './components/NavigationBar';
 
 
 class App extends Component{
+
+  
   state={
     projects:[],
     comments:[]
@@ -34,16 +36,35 @@ class App extends Component{
   
   }
 
+  addLike=(newProject)=>{
+  
+    let current_project= this.state.projects.reduce((acc,currVal) =>{ 
+      if(currVal.id === newProject.id) {
+         return acc.concat([newProject])
+      } else{
+        return acc.concat([currVal])
+      }
+    }, [])
+    
+    this.setState({
+      projects: current_project
+    })
+  }
+  
+
+
+
 
 
   render(){
+    console.log(this.state.projects.forEach(console.log))
     return(
       <React.Fragment>
         <NavigationBar/>
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/" render={props=><Home {...props} projects={this.state.projects} comments={this.state.comments} /> }/>
+              <Route exact path="/" render={props=><Home {...props} projects={this.state.projects} comments={this.state.comments} addlikes={this.addLike} /> }/>
               <Route path="/favorite" component={Favorite}/>
               <Route path="/submitproject" component={SubmitProject}/>
               <Route path="/login" component={LogIn}/>
