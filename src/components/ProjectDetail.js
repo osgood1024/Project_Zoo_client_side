@@ -57,7 +57,7 @@ handleLikes = (e) => {
 
  
     render(){
-      const { project} = this.props;
+      const {project} = this.props;
       const {setModalShow} = this.state;
       console.log('setModalShow status in projectDetail', setModalShow)
     
@@ -69,6 +69,7 @@ handleLikes = (e) => {
                   <Card.Img variant="top" src={project.image}/>
               </Card.Body>
           </Card> 
+
              <Modal
             show = {setModalShow}
             onHide = {this.onClose}

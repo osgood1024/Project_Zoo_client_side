@@ -11,10 +11,7 @@ const Styles =styled.div `
     background-color: #222;
     padding: 8px 40px 8px 20px;
 }
-// .form-inline {
-//     margin: auto 10%;
-//     width: 40%;
-// }
+
 .form-control {
     border-radius: 15px;
 }
