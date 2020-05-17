@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Modal, Button, Image, ListGroup, ListGroupItem, Form, Col, Container} from 'react-bootstrap';
+import {Modal, Button, Image, ListGroup, ListGroupItem, Card, Form, Col, Container} from 'react-bootstrap';
 import CommentList from './CommentList'
 import Emoji from 'a11y-react-emoji'
 
@@ -8,15 +8,15 @@ import Emoji from 'a11y-react-emoji'
  class ProjectDetail extends Component {
 
   state={
-    likes: this.props.project.like,
-    toggle: false
+    setModalShow: false
+
   }
 
   // **PATCH method for updating like button and save it into database**
 
   handleClick=()=> {
       let project_id= this.props.project.id
-      let count =  this.state.likes +1
+      let count =  this.props.project.like +1
 
       // console.log(project_id)
 
@@ -31,32 +31,42 @@ import Emoji from 'a11y-react-emoji'
     })
   })
     .then(resp => resp.json())
-    .then(newLikes =>  this.props.addlikes(newLikes)) 
+    .then(newLikes =>  this.props.addLikes(newLikes)) 
+}
+
+onClose = (e) => {
+ this.setState({
+   setModalShow : false
+ })
+}
+
+setModalClose=()=>{
+  this.setState({
+      setModalShow: false
+  })
 }
  
 
-// handleLike=()=>{
-  
-//   let countLike= this.state.likes +1
-//   this.setState({
-//     likes : countLike
-//   })
-// }
 
-handleToggle=()=>{
-  this.setState({
-
-    toggle : !this.state.toggle
-  })
-}
 
 
  
     render(){
+      const { project} = this.props;
+      const {setModalShow} = this.state;
+      console.log('setModalShow status in projectDetail', setModalShow)
     
         return(
+          <>
+          <Card border="dark" style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
+              <Card.Body style={{padding:'10px'}}>
+                  <Card.Title>{project.name}</Card.Title>
+                  <Card.Img variant="top" src={project.image}/>
+              </Card.Body>
+          </Card> 
              <Modal
-            {...this.props}
+            show = {setModalShow}
+            onHide = {this.onClose}
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
@@ -123,7 +133,7 @@ handleToggle=()=>{
                       <Col>
                         <Form.Control type="text" placeholder="What are your thought in this project..? " />
                       </Col>
-                    </Form.Row>
+                    </Form.Row>(
                     <br />
                   </Form.Group>
 
@@ -136,9 +146,10 @@ handleToggle=()=>{
 
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={this.props.onHide}>Close</Button>
+              <Button onClick={this.onClose}>Close</Button>
             </Modal.Footer>
           </Modal>
+      </>
 
         )
     }

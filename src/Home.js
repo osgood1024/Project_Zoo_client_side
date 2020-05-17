@@ -1,16 +1,53 @@
 import React from 'react'
-import ProjectContainer from './components/ProjectContainer'
+import ProjectList from './components/ProjectList'
 
 
 
 export class Home extends React.Component{
+    state={
+        projects:[],
+        comments:[]
+    
+      }
+    
+      componentDidMount(){
+        fetch('http://localhost:3000/projects')
+        .then(resp => resp.json())
+        .then(data => this.setState({
+            projects: data
+          })
+        )
+    
+    
+        fetch('http://localhost:3000/comments')
+        .then(resp=>resp.json())
+        .then(commented => this.setState({
+            comments: commented
+        }))
+      
+      }
+    
+      addLike=(newProject)=>{
+      
+        let current_project= this.state.projects.reduce((acc,currVal) =>{ 
+          if(currVal.id === newProject.id) {
+             return acc.concat([newProject])
+          } else{
+            return acc.concat([currVal])
+          }
+        }, [])
+        
+        this.setState({
+          projects: current_project
+        })
+      }
+      
 
 
     render(){
         return(
             <div>
-               {this.props.projects.map(project =><ProjectContainer key={project.id} project={project}
-                comment={this.props.comments.filter(comment => comment.project_id === project.id)} addlikes={this.props.addlikes}/>)}
+               <ProjectList addLikes={this.addLike} projects={this.state.projects} comments={this.state.comments}/>
             </div>
         )
     }
