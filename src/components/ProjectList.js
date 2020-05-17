@@ -4,18 +4,6 @@ import ProjectDetail from './ProjectDetail'
 
 class ProjectList extends React.Component{
 
-// state={
-//     setModalShow: false
-// }
-
-
-
-//   setModalClose=()=>{
-//     this.setState({
-//         setModalShow: false
-//     })
-// }
-
 
     render(){
         return(
@@ -29,7 +17,7 @@ class ProjectList extends React.Component{
                         key={project.id} 
                         project={project}
                         comment={this.props.comments.filter(comment => comment.project_id === project.id)} 
-                        addLikes={this.props.addLikes}/> 
+                        handleLike={this.props.handleLike}/> 
                         </>
                     )
                 })

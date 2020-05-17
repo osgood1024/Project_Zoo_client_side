@@ -7,7 +7,6 @@ export class Home extends React.Component{
     state={
         projects:[],
         comments:[]
-    
       }
     
       componentDidMount(){
@@ -26,8 +25,9 @@ export class Home extends React.Component{
         }))
       
       }
-    
-      addLike=(newProject)=>{
+
+
+      addLike = (newProject)=>{
       
         let current_project= this.state.projects.reduce((acc,currVal) =>{ 
           if(currVal.id === newProject.id) {
@@ -44,10 +44,29 @@ export class Home extends React.Component{
       
 
 
+
+  handleLike = (id,newLike) => {
+
+          fetch(` http://localhost:3000/projects/${id}`, {
+            method: "PATCH",
+            headers:{
+              "content-type" : "application/json",
+              accept : "application/json"
+          },
+          body: JSON.stringify({
+              like: newLike 
+          })
+        })
+          .then(resp => resp.json())
+          .then(updatedProject =>  this.addLike(updatedProject)) 
+        }
+
+
+
     render(){
         return(
             <div>
-               <ProjectList addLikes={this.addLike} projects={this.state.projects} comments={this.state.comments}/>
+               <ProjectList handleLike={this.handleLike} projects={this.state.projects} comments={this.state.comments}/>
             </div>
         )
     }

@@ -14,25 +14,24 @@ import Emoji from 'a11y-react-emoji'
 
   // **PATCH method for updating like button and save it into database**
 
-  handleClick=()=> {
-      let project_id= this.props.project.id
-      let count =  this.props.project.like +1
+//   handleClick=()=> {
+//       let project_id= this.props.project.id
+//       let count =  this.props.project.like +1
 
-      // console.log(project_id)
 
-    fetch(` http://localhost:3000/projects/${project_id}`, {
-      method: "PATCH",
-      headers:{
-        "content-type" : "application/json",
-        accept : "application/json"
-    },
-    body: JSON.stringify({
-        like: count
-    })
-  })
-    .then(resp => resp.json())
-    .then(newLikes =>  this.props.addLikes(newLikes)) 
-}
+//     fetch(` http://localhost:3000/projects/${project_id}`, {
+//       method: "PATCH",
+//       headers:{
+//         "content-type" : "application/json",
+//         accept : "application/json"
+//     },
+//     body: JSON.stringify({
+//         like: count
+//     })
+//   })
+//     .then(resp => resp.json())
+//     .then(newLikes =>  this.props.addLikes(newLikes)) 
+// }
 
 onClose = (e) => {
  this.setState({
@@ -44,6 +43,12 @@ setModalClose=()=>{
   this.setState({
       setModalShow: false
   })
+}
+
+handleLikes = (e) => {
+  const {id, like} = this.props.project
+  const {handleLike} = this.props
+  handleLike(id, like +1)
 }
  
 
@@ -79,7 +84,7 @@ setModalClose=()=>{
             <Modal.Body>
 
               <p>
-            <Button style={{margin: '5px'}} onClick={()=> this.handleClick()} variant="outline-dark" > <Emoji symbol="❤"/>Like </Button> 
+            <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > <Emoji symbol="❤"/>Like </Button> 
             <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
               </p>
 
