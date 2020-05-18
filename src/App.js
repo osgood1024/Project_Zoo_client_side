@@ -11,14 +11,27 @@ import { NavigationBar } from './components/NavigationBar';
 
 
 class App extends Component{
+  state={
+    searchTerm:''
+  }
+
+  handleSearch=(e) =>{
+    this.setState({
+        searchTerm: e.target.value
+    })
+}
+
+
+
   render(){
+
     return(
       <React.Fragment>
-        <NavigationBar/>
+        <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/" component={Home}/>
+              <Route exact path="/" render={props => <Home {...props} search={this.state.searchTerm}/>}/>
               <Route path="/favorite" component={Favorite}/>
               <Route path="/submitproject" component={SubmitProject}/>
               <Route path="/login" component={LogIn}/>

@@ -6,7 +6,8 @@ import ProjectList from './components/ProjectList'
 export class Home extends React.Component{
     state={
         projects:[],
-        comments:[]
+        comments:[],
+    
       }
     
       componentDidMount(){
@@ -44,7 +45,6 @@ export class Home extends React.Component{
       
 
 
-
   handleLike = (id,newLike) => {
 
           fetch(` http://localhost:3000/projects/${id}`, {
@@ -63,10 +63,14 @@ export class Home extends React.Component{
 
 
 
+
     render(){
+        const search=this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
+
+
         return(
             <div>
-               <ProjectList handleLike={this.handleLike} projects={this.state.projects} comments={this.state.comments}/>
+               <ProjectList handleLike={this.handleLike} projects={search} comments={this.state.comments}/>
             </div>
         )
     }

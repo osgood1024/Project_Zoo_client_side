@@ -19,8 +19,6 @@ p{
     padding: 10px;
 }
 
-
-
 `
 
  export const SubmitProject = () => (

@@ -35,7 +35,7 @@ export const NavigationBar=(props)=>(
             <Navbar.Brand href="/">(Project name)</Navbar.Brand>
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
             <Form inline>
-                <FormControl type="text" placeholder="Search Project" className="mr-sm-2" value={null} onChange={null}/>
+                <FormControl type="text" placeholder="Search Project" className="mr-sm-2" value={props.search} onChange={(e)=>props.handleSearch(e)}/>
                 <Button className="rounded-pill" variant="outline-success">Search</Button>
             </Form>
             <Navbar.Collapse id ="basic-navbar-nav">
