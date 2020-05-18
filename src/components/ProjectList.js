@@ -1,5 +1,5 @@
 import React from 'react'
-import {Card , ButtonToolbar} from 'react-bootstrap'
+// import {Card , ButtonToolbar} from 'react-bootstrap'
 import ProjectDetail from './ProjectDetail'
 
 class ProjectList extends React.Component{
@@ -7,9 +7,7 @@ class ProjectList extends React.Component{
 
     render(){
         return(
-            
             <>
-            
             {this.props.projects.map((project) => {
                     return (
                         <>

@@ -42,8 +42,8 @@ export const NavigationBar=(props)=>(
                 <Nav className="ml-auto">
                     <Nav.Item><Nav.Link href="/">Home</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link href="/submitproject">Submit Project</Nav.Link></Nav.Item>
-                    <Nav.Item><Nav.Link href="/login">Login</Nav.Link></Nav.Item>
                     <Nav.Item><Nav.Link href="/favorite">Favorite</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link href="/login">Login</Nav.Link></Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

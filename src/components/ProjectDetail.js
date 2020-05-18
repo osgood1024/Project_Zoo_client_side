@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Modal, Button, Image, ListGroup, ListGroupItem, Card, Form, Col, Container} from 'react-bootstrap';
+import {Modal, Button, Image, Card, Form, Container} from 'react-bootstrap';
 import CommentList from './CommentList'
 import Emoji from 'a11y-react-emoji'
 
@@ -8,30 +8,10 @@ import Emoji from 'a11y-react-emoji'
  class ProjectDetail extends Component {
 
   state={
-    setModalShow: false
-
+    setModalShow: false,
+    toggle: true
   }
 
-  // **PATCH method for updating like button and save it into database**
-
-//   handleClick=()=> {
-//       let project_id= this.props.project.id
-//       let count =  this.props.project.like +1
-
-
-//     fetch(` http://localhost:3000/projects/${project_id}`, {
-//       method: "PATCH",
-//       headers:{
-//         "content-type" : "application/json",
-//         accept : "application/json"
-//     },
-//     body: JSON.stringify({
-//         like: count
-//     })
-//   })
-//     .then(resp => resp.json())
-//     .then(newLikes =>  this.props.addLikes(newLikes)) 
-// }
 
 onClose = (e) => {
  this.setState({
@@ -48,13 +28,27 @@ setModalClose=()=>{
 handleLikes = (e) => {
   const {id, like} = this.props.project
   const {handleLike} = this.props
-  handleLike(id, like +1)
+if(this.state.toggle){
+  handleLike(id, like +1 )
 }
+else{
+  handleLike(id, like -1)
+}
+
+  this.setState({
+
+    toggle :!this.state.toggle
+  })
+}
+
+
+// handleToggle=()=>{
+//   this.setState({
+
+//     toggle :!this.state.toggle
+//   })
+// }
  
-
-
-
-
  
     render(){
       const {project} = this.props;
@@ -85,7 +79,12 @@ handleLikes = (e) => {
             <Modal.Body>
 
               <p>
-            <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > <Emoji symbol="❤"/>Like </Button> 
+            <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > 
+            {/* <Emoji symbol="❤"/> */}
+            {
+              this.state.toggle ? "❤Like" : "Unlike"
+            }
+            </Button> 
             <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
               </p>
 
@@ -112,7 +111,7 @@ handleLikes = (e) => {
                 </a>
               </p>
       </Container>
-
+<br/>
 <Container>
           <h4>Discussion</h4>
           

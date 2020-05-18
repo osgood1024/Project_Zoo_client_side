@@ -67,7 +67,6 @@ export class Home extends React.Component{
     render(){
         const search=this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
 
-
         return(
             <div>
                <ProjectList handleLike={this.handleLike} projects={search} comments={this.state.comments}/>
