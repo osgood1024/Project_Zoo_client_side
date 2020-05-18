@@ -25,6 +25,7 @@ p{
 export class  SubmitProject extends Component {
 
     state={
+        projects:[],
         projectName : "" ,
         projectLink: "" ,
         projectPic: "" ,
@@ -35,6 +36,14 @@ export class  SubmitProject extends Component {
         this.setState({
             [e.target.name] : e.target.value
         })
+    }
+
+    componentDidMount(){
+        fetch('http://localhost:3000/projects')
+        .then(resp => resp.json())
+        .then(data => this.setState({
+        projects:data
+        })) 
     }
 
 
@@ -55,7 +64,9 @@ export class  SubmitProject extends Component {
           })
         })
         .then(resp => resp.json())
-        .then(newProject => console.log(newProject))
+        .then(newProject => this.setState({
+            projects:[...this.state.projects,newProject]
+        }))
     }
     
         
