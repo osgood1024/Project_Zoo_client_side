@@ -5,7 +5,6 @@ import ProjectList from './components/ProjectList'
 
 export class Home extends React.Component{
     state={
-        projects:[],
         comments:[],
         users:[]
         
@@ -13,15 +12,7 @@ export class Home extends React.Component{
       }
     
       componentDidMount(){
-        // debugger;
-        fetch('http://localhost:3000/projects')
-        .then(resp => resp.json())
-        .then(data => this.setState({
-            projects: data
-          })
-        )
-    
-    
+
         fetch('http://localhost:3000/comments')
         .then(resp=>resp.json())
         .then(commented => this.setState({
@@ -41,23 +32,6 @@ export class Home extends React.Component{
 
 
 
-      addLike = (newProject)=>{
-      
-        let current_project= this.state.projects.reduce((acc,currVal) =>{ 
-          if(currVal.id === newProject.id) {
-             return acc.concat([newProject])
-          } else{
-            return acc.concat([currVal])
-          }
-        }, [])
-        
-        this.setState({
-          projects: current_project
-        })
-      }
-      
-
-
   handleLike = (id,newLike) => {
 
           fetch(` http://localhost:3000/projects/${id}`, {
@@ -71,7 +45,7 @@ export class Home extends React.Component{
           })
         })
           .then(resp => resp.json())
-          .then(updatedProject =>  this.addLike(updatedProject)) 
+          .then(updatedProject =>  this.props.addLike(updatedProject)) 
         }
 
 
@@ -90,8 +64,8 @@ export class Home extends React.Component{
         })
     }
 
-handleFavoriteDel=(project_id)=>{
-  fetch(`http://localhost:3000/favorites`, {
+handleFavoriteDel=(project_id,favorite_id)=>{
+  fetch(`http://localhost:3000/favorites/${favorite_id}`, {
     method: "Delete",
     headers:{
       "content-type" : "application/json",
@@ -99,18 +73,16 @@ handleFavoriteDel=(project_id)=>{
     }
   })
     .then(resp => resp.json())
-    .then(()=> this.deleteFav(project_id))
+    .then(()=> this.props.deleteFav(project_id))
 }
-  
-  deleteFav=(id)=>{
-    let project =this.state.projects.filter(project => project.id !== id)
-    this.setState({
-      projects: project
-    })
 
-  }
+// deleteFav=(id)=>{
+//   let project =this.props.projects.filter(project => project.id !== id)
+//   this.setState({
+//     projects: project
+//   })
 
-
+// }
 
 
   handleComment=(ProjectId,newcontent)=>{
@@ -161,13 +133,9 @@ handleFavoriteDel=(project_id)=>{
 
 
 
-
-
-
-
     render(){
-      // console.log(this.state.users)
-        const search=this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
+
+        const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
         
         return(
             <div>

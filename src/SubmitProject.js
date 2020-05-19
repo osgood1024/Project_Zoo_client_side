@@ -57,8 +57,11 @@ export class  SubmitProject extends Component {
           })
         })
         .then(resp => resp.json())
-        
-        .then(this.props.history.push('/'))
+        .then(newSubmit=> this.props.newProject(newSubmit)
+        )
+        .then(
+        this.props.history.push('/')
+        )
     }
     
         

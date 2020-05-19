@@ -25,9 +25,7 @@ class ProjectList extends React.Component{
                         handleComment={this.props.handleComment}
                         handleDelComment={this.props.handleDelComment}
 
-                        /> 
-
-                       
+                        />
                     )
             }
             </>
