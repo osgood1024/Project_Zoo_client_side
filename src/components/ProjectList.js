@@ -22,8 +22,8 @@ class ProjectList extends React.Component{
                         handleLike={this.props.handleLike}
                         handleFavorite={this.props.handleFavorite}
                         handleFavoriteDel={this.props.handleFavoriteDel}
-                        // handleChange={this.handleChange}
                         handleComment={this.props.handleComment}
+                        handleDelComment={this.props.handleDelComment}
 
                         /> 
 

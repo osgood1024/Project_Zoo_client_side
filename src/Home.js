@@ -135,19 +135,29 @@ handleFavoriteDel=(project_id)=>{
     )
   }
 
-  // addComment=(pid, newComment) =>{
-  //   let comment=this.state.comments.filter(comment => comment.project_id === pid)
-  //   if (comment){
-  //     this.setState({
-  //       comments: newComment
-  //     })
-  //   }
 
 
-  //   this.setState({
-  //     comments: comment
-  //   })
-  // }
+  handleDelComment=(cid) =>{
+    fetch(`http://localhost:3000/comments/${cid}`, {
+      method: "Delete",
+      headers:{
+        "content-type" : "application/json",
+        accept : "application/json"
+      }
+    })
+      .then(resp => resp.json())
+      .then(()=> this.deleteComment(cid))
+
+  }
+
+
+  deleteComment=(cid)=>{
+    let comment =this.state.comments.filter(comment => comment.id !== cid)
+    this.setState({
+      comments: comment
+    })
+
+  }
 
 
 
@@ -169,8 +179,8 @@ handleFavoriteDel=(project_id)=>{
                 projects={search} 
                 comments={this.state.comments}
                 users={this.state.users}
-                // handleChange={this.handleChange}
                 handleComment={this.handleComment}
+                handleDelComment={this.handleDelComment}
                 />
             </div>
         )

@@ -66,7 +66,6 @@ handleChange=(e)=>{
 
 
 handleSubmit =() =>{
-  // console.log("Hey")
   const{id}=this.props.project
   const{handleComment}=this.props
 
@@ -76,18 +75,24 @@ handleSubmit =() =>{
   })
 }
 
+
+// handleDelete=() =>{
+//   const{id}=this.props.comment
+
+//   const{handleDelComment}=this.props
+
+//   handleDelComment(id)
+// }
+
  
  
     render(){
       const {project} = this.props;
       const {setModalShow} = this.state;
       // console.log('setModalShow status in projectDetail', setModalShow)
-      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)
-
-      // let userComment=this.props.comment.
-
-      // console.log(this.props.comment)
+      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
       
+      // console.log(this.props.comment.map(c =>c.id))
     
         return(
           <>
@@ -161,9 +166,17 @@ handleSubmit =() =>{
           <br/>
           <br/>
           <CommentList comments={this.props.comment.map(c => 
+
           <p> 
+
+          <Button type="button" className="close" aria-label="Close" onClick={()=>this.props.handleDelComment(c.id)}>
+            <span aria-hidden="true">&times;</span>
+          </Button>
+
           <h5>{c.user_id}:</h5> 
+
           {c.content}<hr /> 
+
           </p> 
           )
 
