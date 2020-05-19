@@ -15,21 +15,14 @@ class ProjectList extends React.Component{
                         // project.name &&
                         <ProjectDetail 
                         key={project.id} 
+                        users={this.props.users}
                         project={project}
-                        comment={this.props.comments.filter(comment => comment.project_id === project.id)} 
+                        comment={this.props.comments} 
                         handleLike={this.props.handleLike}
                         handleFavorite={this.props.handleFavorite}
                         handleFavoriteDel={this.props.handleFavoriteDel}
+
                         /> 
-                        // :
-                        // <ProjectDetail 
-                        // key={project.id} 
-                        // project={project}
-                        // comment={this.props.comments.filter(comment => comment.project_id === project.id)} 
-                        // handleLike={this.props.handleLike}
-                        // handleFavorite={this.props.handleFavorite}
-                        // handleFavoriteDel={this.props.handleFavoriteDel}
-                        // /> 
 
                        
                     )

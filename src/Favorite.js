@@ -12,6 +12,7 @@ state={
     //     "project": {...},
     // }]
     comments:[],
+    users:[]
   
 }
 componentDidMount(){
@@ -70,6 +71,16 @@ componentDidMount(){
         comments: commented
     }))
 
+    fetch('http://localhost:3000/users')
+    .then(resp=>resp.json())
+    .then(user => this.setState({
+        users: user
+    })
+    )
+
+
+
+
 
 
 }
@@ -78,22 +89,14 @@ componentDidMount(){
 
 
 render(){
-    // const {favorites} = this.state;
     const projects = this.state.favorites.filter(fav => fav.user.id  === 31).map(fav => fav.project)
-    
-    // .map(favorite => favorite.project_id ===32)
-
-
-
-        console.log(this.state.favorites)
 
         return(
             <>
-            {/* {this.state.favorite.map(fav_project => <ProjectList key={fav_project.id} fav_project={fav_project}/>)} */}
         
         {
             
-             projects &&  <ProjectList projects={projects} comments={this.state.comments}  />
+             projects &&  <ProjectList users={this.state.users} projects={projects} comments={this.state.comments}  />
 
         }
               

@@ -6,7 +6,8 @@ import ProjectList from './components/ProjectList'
 export class Home extends React.Component{
     state={
         projects:[],
-        comments:[]
+        comments:[],
+        users:[]
     
       }
     
@@ -24,9 +25,16 @@ export class Home extends React.Component{
         .then(resp=>resp.json())
         .then(commented => this.setState({
             comments: commented
-        }))
+        })
+        )
     
 
+        fetch('http://localhost:3000/users')
+        .then(resp=>resp.json())
+        .then(user => this.setState({
+            users: user
+        })
+        )
 
       }
 
@@ -107,17 +115,19 @@ handleFavoriteDel=(project_id)=>{
 
 
     render(){
-      console.log(this.state.projects)
+      // console.log(this.state.users)
         const search=this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
         
         return(
             <div>
                <ProjectList 
-               handleLike={this.handleLike}
                 handleFavorite={this.handleFavorite}
+                handleFavoriteDel={this.handleFavoriteDel}
+                handleLike={this.handleLike}
                 projects={search} 
                 comments={this.state.comments}
-                handleFavoriteDel={this.handleFavoriteDel}/>
+                users={this.state.users}
+                />
             </div>
         )
     }

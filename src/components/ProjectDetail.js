@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Modal, Button, Image, Card, Form, Container} from 'react-bootstrap';
 import CommentList from './CommentList'
-import Emoji from 'a11y-react-emoji'
+// import Emoji from 'a11y-react-emoji'
 
 
 
@@ -60,7 +60,13 @@ handleFavoriteList = () =>{
     render(){
       const {project} = this.props;
       const {setModalShow} = this.state;
-      console.log('setModalShow status in projectDetail', setModalShow)
+      // console.log('setModalShow status in projectDetail', setModalShow)
+      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)
+
+      let commentList=this.props.comment.filter(c => c.project_id=== project.id)
+
+      // console.log(commentList)
+      
     
         return(
           <>
@@ -114,9 +120,8 @@ handleFavoriteList = () =>{
               <p>
                 Like: {this.props.project.like} 
               </p>
-
               <p>
-                  Owner:
+                  Owner: {userName}
               </p>
 
               <p>
@@ -134,8 +139,12 @@ handleFavoriteList = () =>{
           <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" >Post</Button>
           <br/>
           <br/>
-          <CommentList comments={this.props.comment.map(c => 
-          <p> <h5>user name:</h5> {c.content}<hr /> </p> )
+          <CommentList comments={commentList.map(c => 
+          <p> 
+          <h5>{c.user_id}:</h5> 
+          {c.content}<hr /> 
+          </p> 
+          )
 
           }/>
 
