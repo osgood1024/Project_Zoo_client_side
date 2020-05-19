@@ -55,6 +55,13 @@ handleFavoriteList = () =>{
       toggleFav : !this.state.toggleFav
     })
 }
+
+handleComments =() =>{
+  const{id}=this.props.project
+  const{handleComment}=this.props
+  handleComment(id)
+}
+
  
  
     render(){
@@ -134,7 +141,7 @@ handleFavoriteList = () =>{
 <Container>
           <h4>Discussion</h4>
           
-          <Form.Control as="textarea" rows="3" onSubmit={null} placeholder="What are your thought in this project..? "/>
+          <Form.Control as="textarea" rows="3" name="content" onChange={this.props.handleChange} onSubmit={this.handleComments} placeholder="What are your thought in this project..? "/>
           <br/>
           <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" >Post</Button>
           <br/>

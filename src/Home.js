@@ -7,7 +7,8 @@ export class Home extends React.Component{
     state={
         projects:[],
         comments:[],
-        users:[]
+        users:[],
+        contents: ""
     
       }
     
@@ -112,6 +113,34 @@ handleFavoriteDel=(project_id)=>{
 
   }
 
+  handleComment=(ProjectId)=>{
+    fetch(`http://localhost:3000/comments`, {
+      method: "POST",
+      headers:{
+        "content-type" : "application/json",
+        accept : "application/json"
+      },
+      body: JSON.stringify({
+        user_id: 31,
+        project_id: ProjectId,
+        content:this.state.content
+       })
+    })
+      .then(resp => resp.json())
+      .then(newComment => this.setState({
+        contents:[...this.state.contents,newComment]
+      })
+      )
+  }
+
+
+
+handleChange=(e)=>{
+  this.setState({
+      [e.target.name] : e.target.value
+  })
+}
+
 
 
     render(){
@@ -124,9 +153,12 @@ handleFavoriteDel=(project_id)=>{
                 handleFavorite={this.handleFavorite}
                 handleFavoriteDel={this.handleFavoriteDel}
                 handleLike={this.handleLike}
+                contents={this.state.contents}
                 projects={search} 
                 comments={this.state.comments}
                 users={this.state.users}
+                handleChange={this.handleChange}
+                handleComment={this.handleComment}
                 />
             </div>
         )
