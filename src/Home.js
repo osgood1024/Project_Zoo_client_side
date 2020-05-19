@@ -6,11 +6,12 @@ import ProjectList from './components/ProjectList'
 export class Home extends React.Component{
     state={
         projects:[],
-        comments:[],
+        comments:[]
     
       }
     
       componentDidMount(){
+        // debugger;
         fetch('http://localhost:3000/projects')
         .then(resp => resp.json())
         .then(data => this.setState({
@@ -24,8 +25,11 @@ export class Home extends React.Component{
         .then(commented => this.setState({
             comments: commented
         }))
-      
+    
+
+
       }
+
 
 
       addLike = (newProject)=>{
@@ -62,14 +66,58 @@ export class Home extends React.Component{
         }
 
 
+  handleFavorite =(ProjectId)=>{
+    
+          fetch(`http://localhost:3000/favorites`, {
+            method: "POST",
+            headers:{
+              "content-type" : "application/json",
+              accept : "application/json"
+          },
+          body: JSON.stringify({
+              user_id: 31,
+              project_id: ProjectId
+          })
+        })
+    }
+
+    // .then(resp => resp.json())
+    // .then(newFav => console.log(newFav)) 
+  
+handleFavoriteDel=(project_id)=>{
+  fetch(`http://localhost:3000/favorites`, {
+    method: "Delete",
+    headers:{
+      "content-type" : "application/json",
+      accept : "application/json"
+    }
+  })
+    .then(resp => resp.json())
+    .then(()=> this.deleteFav(project_id))
+}
+  
+  deleteFav=(id)=>{
+    let project =this.state.projects.filter(project => project.id !== id)
+    this.setState({
+      projects: project
+    })
+
+  }
+
 
 
     render(){
+      console.log(this.state.projects)
         const search=this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
-
+        
         return(
             <div>
-               <ProjectList handleLike={this.handleLike} projects={search} comments={this.state.comments}/>
+               <ProjectList 
+               handleLike={this.handleLike}
+                handleFavorite={this.handleFavorite}
+                projects={search} 
+                comments={this.state.comments}
+                handleFavoriteDel={this.handleFavoriteDel}/>
             </div>
         )
     }

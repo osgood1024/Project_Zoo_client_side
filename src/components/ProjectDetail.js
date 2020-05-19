@@ -9,7 +9,8 @@ import Emoji from 'a11y-react-emoji'
 
   state={
     setModalShow: false,
-    toggle: true
+    toggle: true,
+    toggleFav: true
   }
 
 
@@ -41,13 +42,19 @@ else{
   })
 }
 
+handleFavoriteList = () =>{
+    const{id}=this.props.project
+    const{handleFavorite,handleFavoriteDel}=this.props
 
-// handleToggle=()=>{
-//   this.setState({
-
-//     toggle :!this.state.toggle
-//   })
-// }
+    if(this.state.toggleFav){
+      handleFavorite(id)
+    }else{
+      handleFavoriteDel(id)
+    }
+    this.setState({
+      toggleFav : !this.state.toggleFav
+    })
+}
  
  
     render(){
@@ -85,7 +92,14 @@ else{
               this.state.toggle ? "❤Like" : "Unlike"
             }
             </Button> 
-            <Button variant="outline-dark">  <Emoji symbol="⭐"/> Add to Favorite</Button>
+
+            <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
+             {/* <Emoji symbol="⭐"/>  */}
+             {
+               this.state.toggleFav ? "⭐Add to Favorite" : "Remove from Favorite"
+             }
+            
+            </Button>
               </p>
 
               <p>
@@ -126,28 +140,6 @@ else{
           }/>
 
 </Container>
-
-
-{/* 
-            <div>
-                  <Form.Group>
-                    <Form.Row>
-                      <Form.Label column lg={1.5}>
-                       
-                      </Form.Label>
-                      <Col>
-                        <Form.Control type="text" placeholder="What are your thought in this project..? " />
-                      </Col>
-                    </Form.Row>(
-                    <br />
-                  </Form.Group>
-
-          Comment:
-            <p>
-             {this.props.comment.map(c => <p> {c.content} </p> )}
-            </p>
-        
-            </div> */}
 
             </Modal.Body>
             <Modal.Footer>
