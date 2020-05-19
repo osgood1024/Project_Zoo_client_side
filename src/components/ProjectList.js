@@ -18,12 +18,12 @@ class ProjectList extends React.Component{
                         contents={this.props.contents}
                         users={this.props.users}
                         project={project}
-                        comment={this.props.comments} 
+                        comment={this.props.comments.filter(c => c.project_id === project.id)} 
                         handleLike={this.props.handleLike}
                         handleFavorite={this.props.handleFavorite}
                         handleFavoriteDel={this.props.handleFavoriteDel}
-                        handleChange={this.handleChange}
-                        handleComment={this.handleComment}
+                        // handleChange={this.handleChange}
+                        handleComment={this.props.handleComment}
 
                         /> 
 

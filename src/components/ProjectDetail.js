@@ -10,7 +10,8 @@ import CommentList from './CommentList'
   state={
     setModalShow: false,
     toggle: true,
-    toggleFav: true
+    toggleFav: true,
+    description:""
   }
 
 
@@ -56,10 +57,23 @@ handleFavoriteList = () =>{
     })
 }
 
-handleComments =() =>{
+handleChange=(e)=>{
+  this.setState({
+      [e.target.name] : e.target.value
+  })
+}
+
+
+
+handleSubmit =() =>{
+  // console.log("Hey")
   const{id}=this.props.project
   const{handleComment}=this.props
-  handleComment(id)
+
+  handleComment(id,this.state.description)
+  this.setState({
+    description: ""
+  })
 }
 
  
@@ -70,9 +84,9 @@ handleComments =() =>{
       // console.log('setModalShow status in projectDetail', setModalShow)
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)
 
-      let commentList=this.props.comment.filter(c => c.project_id=== project.id)
+      // let userComment=this.props.comment.
 
-      // console.log(commentList)
+      // console.log(this.props.comment)
       
     
         return(
@@ -141,12 +155,12 @@ handleComments =() =>{
 <Container>
           <h4>Discussion</h4>
           
-          <Form.Control as="textarea" rows="3" name="content" onChange={this.props.handleChange} onSubmit={this.handleComments} placeholder="What are your thought in this project..? "/>
+          <Form.Control as="textarea" rows="3" name="description" value={this.state.description} onChange={this.handleChange} placeholder="What are your thought in this project..? "/>
           <br/>
-          <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" >Post</Button>
+          <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" onClick={this.handleSubmit} >Post</Button>
           <br/>
           <br/>
-          <CommentList comments={commentList.map(c => 
+          <CommentList comments={this.props.comment.map(c => 
           <p> 
           <h5>{c.user_id}:</h5> 
           {c.content}<hr /> 

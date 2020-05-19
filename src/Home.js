@@ -7,8 +7,8 @@ export class Home extends React.Component{
     state={
         projects:[],
         comments:[],
-        users:[],
-        contents: ""
+        users:[]
+        
     
       }
     
@@ -90,9 +90,6 @@ export class Home extends React.Component{
         })
     }
 
-    // .then(resp => resp.json())
-    // .then(newFav => console.log(newFav)) 
-  
 handleFavoriteDel=(project_id)=>{
   fetch(`http://localhost:3000/favorites`, {
     method: "Delete",
@@ -113,8 +110,12 @@ handleFavoriteDel=(project_id)=>{
 
   }
 
-  handleComment=(ProjectId)=>{
-    fetch(`http://localhost:3000/comments`, {
+
+
+
+  handleComment=(ProjectId,newcontent)=>{
+
+    fetch('http://localhost:3000/comments', {
       method: "POST",
       headers:{
         "content-type" : "application/json",
@@ -123,23 +124,34 @@ handleFavoriteDel=(project_id)=>{
       body: JSON.stringify({
         user_id: 31,
         project_id: ProjectId,
-        content:this.state.content
+        content: newcontent
        })
     })
       .then(resp => resp.json())
-      .then(newComment => this.setState({
-        contents:[...this.state.contents,newComment]
+      .then(newComment => 
+        this.setState({
+          comments: [...this.state.comments,newComment]
       })
-      )
+    )
   }
 
+  // addComment=(pid, newComment) =>{
+  //   let comment=this.state.comments.filter(comment => comment.project_id === pid)
+  //   if (comment){
+  //     this.setState({
+  //       comments: newComment
+  //     })
+  //   }
 
 
-handleChange=(e)=>{
-  this.setState({
-      [e.target.name] : e.target.value
-  })
-}
+  //   this.setState({
+  //     comments: comment
+  //   })
+  // }
+
+
+
+
 
 
 
@@ -157,7 +169,7 @@ handleChange=(e)=>{
                 projects={search} 
                 comments={this.state.comments}
                 users={this.state.users}
-                handleChange={this.handleChange}
+                // handleChange={this.handleChange}
                 handleComment={this.handleComment}
                 />
             </div>

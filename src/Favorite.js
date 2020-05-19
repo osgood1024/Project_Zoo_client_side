@@ -37,6 +37,7 @@ componentDidMount(){
         return Promise.all(list.map(l => {
             const {user_id, project_id, id} = l
             // console.log(id ,"fav_id")
+            
             // fetch both user and projectId
             const fetchUser = fetch(`http://localhost:3000/users/${user_id}`)
             const fetchProject = fetch(`http://localhost:3000/projects/${project_id}`)
@@ -58,7 +59,7 @@ componentDidMount(){
     })
     // set state
     .then(allFulfilled => {
-        // console.log(allFulfilled)
+        console.log(allFulfilled)
         this.setState({
             favorites: allFulfilled
         })
