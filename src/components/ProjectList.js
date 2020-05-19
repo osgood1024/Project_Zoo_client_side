@@ -11,11 +11,10 @@ class ProjectList extends React.Component{
             <>
             
             {this.props.projects.map(project => 
-
+                    
                         // project.name &&
                         <ProjectDetail 
                         key={project.id} 
-                        contents={this.props.contents}
                         users={this.props.users}
                         project={project}
                         comment={this.props.comments.filter(c => c.project_id === project.id)} 

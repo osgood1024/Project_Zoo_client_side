@@ -65,13 +65,14 @@ handleChange=(e)=>{
 
 
 
-handleSubmit =() =>{
+handleSubmit = () =>{
   const{id}=this.props.project
   const{handleComment}=this.props
 
   handleComment(id,this.state.description)
+  
   this.setState({
-    description: ""
+    description:""
   })
 }
 

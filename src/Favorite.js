@@ -37,7 +37,7 @@ componentDidMount(){
         return Promise.all(list.map(l => {
             const {user_id, project_id, id} = l
             // console.log(id ,"fav_id")
-            
+
             // fetch both user and projectId
             const fetchUser = fetch(`http://localhost:3000/users/${user_id}`)
             const fetchProject = fetch(`http://localhost:3000/projects/${project_id}`)
@@ -90,7 +90,7 @@ componentDidMount(){
 
 
 render(){
-    const projects = this.state.favorites.filter(fav => fav.user.id  === 31).map(fav => fav.project)
+    const projects = this.state.favorites.filter(fav => fav.user.id  === 1).map(fav => fav.project)
 
         return(
             <>

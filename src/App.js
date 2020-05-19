@@ -13,6 +13,8 @@ import { NavigationBar } from './components/NavigationBar';
 class App extends Component{
   state={
     projects:[],
+    comments:[],
+    users:[],
     searchTerm:''
   }
 
@@ -25,8 +27,38 @@ componentDidMount(){
       projects: data
     })
   )
+  fetch('http://localhost:3000/comments')
+  .then(resp => resp.json())
+  .then(commented => this.setState({
+      comments: commented
+  }))
+
+  fetch('http://localhost:3000/users')
+  .then(resp=>resp.json())
+  .then(user => this.setState({
+      users: user
+  })
+  )
+
 }
 
+
+
+handleLike = (id,newLike) => {
+
+  fetch(` http://localhost:3000/projects/${id}`, {
+    method: "PATCH",
+    headers:{
+      "content-type" : "application/json",
+      accept : "application/json"
+  },
+  body: JSON.stringify({
+      like: newLike 
+  })
+})
+  .then(resp => resp.json())
+  .then(updatedProject =>  this.addLike(updatedProject)) 
+}
 
 
 addLike = (newProject)=>{
@@ -45,8 +77,88 @@ addLike = (newProject)=>{
 }
 
 
+
+handleFavorite =(ProjectId)=>{
+
+  fetch(`http://localhost:3000/favorites`, {
+    method: "POST",
+    headers:{
+      "content-type" : "application/json",
+      accept : "application/json"
+  },
+  body: JSON.stringify({
+      user_id: 1,
+      project_id: ProjectId
+  })
+})
+}
+
+handleFavoriteDel=(project_id,favorite_id)=>{
+fetch(`http://localhost:3000/favorites/${favorite_id}`, {
+method: "Delete",
+headers:{
+"content-type" : "application/json",
+accept : "application/json"
+}
+})
+.then(resp => resp.json())
+.then(()=> this.deleteFav(project_id))
+}
+
+
+
+
+handleComment=(ProjectId,newcontent)=>{
+
+    fetch('http://localhost:3000/comments', {
+      method: "POST",
+        headers:{
+          "content-type" : "application/json",
+          accept : "application/json"
+        },
+        body: JSON.stringify({
+          user_id: 1,
+          project_id: ProjectId,
+          content: newcontent
+          })
+        })
+        .then(resp => resp.json())
+        .then(newComment => 
+        this.setState({
+          comments: [...this.state.comments,newComment]
+        })
+    )
+}
+
+
+
+handleDelComment=(cid) =>{
+    fetch(`http://localhost:3000/comments/${cid}`, {
+    method: "Delete",
+    headers:{
+    "content-type" : "application/json",
+    accept : "application/json"
+    }
+    })
+    .then(resp => resp.json())
+    .then(()=> this.deleteComment(cid))
+
+}
+
+
+deleteComment=(cid)=>{
+let comment =this.state.comments.filter(comment => comment.id !== cid)
+this.setState({
+comments: comment
+})
+
+}
+
+
+
+
 deleteFav=(id)=>{
-  let project =this.props.projects.filter(project => project.id !== id)
+  let project =this.projects.filter(project => project.id !== id)
   this.setState({
     projects: project
   })
@@ -75,9 +187,19 @@ addProject=(newProject)=>{
         <Layout>
           <Router>
             <Switch>
-              <Route exact path="/" render={props => <Home {...props} search={this.state.searchTerm} projects={this.state.projects}
-               deleteFav={this.deleteFav} addLike={this.addLike}/>}/>
-              <Route path="/favorite" component={Favorite}/>
+              <Route exact path="/" render={props => <Home {...props} 
+               search={this.state.searchTerm} 
+               projects={this.state.projects}
+               comments={this.state.comments}
+               users={this.state.users}
+               handleFavorite={this.handleFavorite} 
+               handleFavoriteDel={this.handleFavoriteDel}
+               handleLike={this.handleLike}
+               handleComment={this.handleComment}
+               handleDelComment={this.handleDelComment}
+               
+               />}/>
+              <Route path="/favorite" render={props => <Favorite {...props} addLike={this.addLike} />} />
               <Route path="/submitproject" render={ props => <SubmitProject {...props} projects={this.state.projects} 
               newProject={this.addProject} />}/>
               <Route path="/login" component={LogIn}/>

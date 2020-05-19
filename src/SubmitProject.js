@@ -47,7 +47,7 @@ export class  SubmitProject extends Component {
               accept : "application/json"
           },
           body: JSON.stringify({
-            user_id : 30,
+            user_id : 1,
             name : this.state.name,
             link: this.state.link,
             image: this.state.image ,
@@ -69,7 +69,6 @@ export class  SubmitProject extends Component {
 
 
 render(){
-    // console.log(this.state)
     return(
         <Styles>
         <Segment inverted padded={"very"} className={'form_layout'}>
