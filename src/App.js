@@ -200,8 +200,6 @@ addProject=(newProject)=>{
 
   render(){
 
-    // console.log(this.state.favorites.map(p =>p.project.like))
-
     return(
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />

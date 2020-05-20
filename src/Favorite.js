@@ -62,7 +62,9 @@ render(){
     // const search=this.state.favorites.map(fav => fav.project).filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
     // const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
 // console.log(favorite_projects.map(p => p.id))
+const search=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
 
+console.log(search)
         return(
             <>
         {
@@ -70,7 +72,7 @@ render(){
 
              <ProjectList
               users={this.props.users} 
-              projects={favorite_projects} 
+              projects={search} 
               comments={this.props.comments} 
               handleFavorite={this.props.handleFavorite} 
               handleFavoriteDel={this.props.handleFavoriteDel}
