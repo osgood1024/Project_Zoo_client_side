@@ -15,6 +15,7 @@ class ProjectList extends React.Component{
                         // project.name &&
                         <ProjectDetail 
                         key={project.id} 
+                        favorites={this.props.favorites}
                         users={this.props.users}
                         project={project}
                         comment={this.props.comments.filter(c => c.project_id === project.id)} 

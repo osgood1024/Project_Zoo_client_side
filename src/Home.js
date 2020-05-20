@@ -4,12 +4,6 @@ import ProjectList from './components/ProjectList'
 
 
 export class Home extends React.Component{
-   
-
-
-
-
-
     render(){
 
         const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
@@ -17,10 +11,11 @@ export class Home extends React.Component{
         return(
             <div>
                <ProjectList 
-                handleLike={this.props.handleLike}
                 projects={search} 
+                favorites={this.props.favorites}
                 comments={this.props.comments}
                 users={this.props.users}
+                handleLike={this.props.handleLike}
                 handleFavorite={this.props.handleFavorite}
                 handleFavoriteDel={this.props.handleFavoriteDel}
                 handleComment={this.props.handleComment}

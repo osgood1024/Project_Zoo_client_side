@@ -15,6 +15,7 @@ class App extends Component{
     projects:[],
     comments:[],
     users:[],
+    favorites:[],
     searchTerm:''
   }
 
@@ -40,8 +41,21 @@ componentDidMount(){
   })
   )
 
+  fetch('http://localhost:3000/favorites')
+  .then(resp => resp.json())
+  .then(fav => this.setState({
+      favorites : fav
+  }))
+
+
 }
 
+
+handleSearch=(e) =>{
+  this.setState({
+      searchTerm: e.target.value
+  })
+}
 
 
 handleLike = (id,newLike) => {
@@ -63,7 +77,7 @@ handleLike = (id,newLike) => {
 
 addLike = (newProject)=>{
       
-  let current_project= this.state.projects.reduce((acc,currVal) =>{ 
+  let current_project = this.state.projects.reduce((acc,currVal) => { 
     if(currVal.id === newProject.id) {
        return acc.concat([newProject])
     } else{
@@ -107,8 +121,18 @@ accept : "application/json"
 
 
 
+deleteFav=(id)=>{
+  let project =this.projects.filter(project => project.id !== id)
+  this.setState({
+    projects: project
+  })
 
-handleComment=(ProjectId,newcontent)=>{
+}
+
+
+
+
+handleComment=(user_id,ProjectId,newcontent)=>{
 
     fetch('http://localhost:3000/comments', {
       method: "POST",
@@ -117,7 +141,7 @@ handleComment=(ProjectId,newcontent)=>{
           accept : "application/json"
         },
         body: JSON.stringify({
-          user_id: 1,
+          user_id: user_id,
           project_id: ProjectId,
           content: newcontent
           })
@@ -147,30 +171,13 @@ handleDelComment=(cid) =>{
 
 
 deleteComment=(cid)=>{
-let comment =this.state.comments.filter(comment => comment.id !== cid)
-this.setState({
-comments: comment
-})
-
+    let comment =this.state.comments.filter(comment => comment.id !== cid)
+      this.setState({
+        comments: comment
+      })
 }
 
 
-
-
-deleteFav=(id)=>{
-  let project =this.projects.filter(project => project.id !== id)
-  this.setState({
-    projects: project
-  })
-
-}
-
-
-  handleSearch=(e) =>{
-    this.setState({
-        searchTerm: e.target.value
-    })
-}
 
 addProject=(newProject)=>{
   this.setState({
@@ -189,9 +196,10 @@ addProject=(newProject)=>{
             <Switch>
               <Route exact path="/" render={props => <Home {...props} 
                search={this.state.searchTerm} 
-               projects={this.state.projects}
-               comments={this.state.comments}
+               favorites={this.state.favorites}
                users={this.state.users}
+               comments={this.state.comments}
+               projects={this.state.projects}
                handleFavorite={this.handleFavorite} 
                handleFavoriteDel={this.handleFavoriteDel}
                handleLike={this.handleLike}
@@ -199,7 +207,20 @@ addProject=(newProject)=>{
                handleDelComment={this.handleDelComment}
                
                />}/>
-              <Route path="/favorite" render={props => <Favorite {...props} addLike={this.addLike} />} />
+              <Route path="/favorite" render={props => <Favorite {...props} 
+              search={this.state.searchTerm}
+              favorites={this.state.favorites}
+              users={this.state.users}
+              comments={this.state.comments}
+              projects={this.state.projects}
+              handleFavorite={this.handleFavorite} 
+              handleFavoriteDel={this.handleFavoriteDel}
+              handleLike={this.handleLike}
+              handleComment={this.handleComment}
+              handleDelComment={this.handleDelComment}
+            
+              
+              />} />
               <Route path="/submitproject" render={ props => <SubmitProject {...props} projects={this.state.projects} 
               newProject={this.addProject} />}/>
               <Route path="/login" component={LogIn}/>

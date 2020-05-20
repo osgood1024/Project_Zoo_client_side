@@ -45,12 +45,13 @@ else{
 
 handleFavoriteList = () =>{
     const{id}=this.props.project
+    
     const{handleFavorite,handleFavoriteDel}=this.props
 
     if(this.state.toggleFav){
       handleFavorite(id)
     }else{
-      handleFavoriteDel(id)
+      handleFavoriteDel(id,this.props.favorites.id)
     }
     this.setState({
       toggleFav : !this.state.toggleFav
@@ -69,21 +70,13 @@ handleSubmit = () =>{
   const{id}=this.props.project
   const{handleComment}=this.props
 
-  handleComment(id,this.state.description)
-  
+  handleComment(1,id,this.state.description)
+
   this.setState({
     description:""
   })
 }
 
-
-// handleDelete=() =>{
-//   const{id}=this.props.comment
-
-//   const{handleDelComment}=this.props
-
-//   handleDelComment(id)
-// }
 
  
  
@@ -94,7 +87,7 @@ handleSubmit = () =>{
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
       
       // console.log(this.props.comment.map(c =>c.id))
-    
+      console.log(this.props.comment)
         return(
           <>
           <Card border="dark" style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
@@ -166,15 +159,18 @@ handleSubmit = () =>{
           <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" onClick={this.handleSubmit} >Post</Button>
           <br/>
           <br/>
-          <CommentList comments={this.props.comment.map(c => 
 
+
+
+          <CommentList comments={this.props.comment.map(c => 
+            
           <p> 
 
           <Button type="button" className="close" aria-label="Close" onClick={()=>this.props.handleDelComment(c.id)}>
             <span aria-hidden="true">&times;</span>
           </Button>
 
-          <h5>{c.user_id}:</h5> 
+          <h5>@{c.user_id}:</h5> 
 
           {c.content}<hr /> 
 
