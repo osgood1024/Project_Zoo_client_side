@@ -34,7 +34,7 @@ if(this.state.toggle){
   handleLike(id, like +1 )
 }
 else{
-  handleLike(id, like -1)
+  handleLike(id, like -1 )
 }
 
   this.setState({
@@ -86,8 +86,6 @@ handleSubmit = () =>{
       // console.log('setModalShow status in projectDetail', setModalShow)
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
       
-      // console.log(this.props.comment.map(c =>c.id))
-      console.log(this.props.comment)
         return(
           <>
           <Card border="dark" style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
@@ -170,7 +168,7 @@ handleSubmit = () =>{
             <span aria-hidden="true">&times;</span>
           </Button>
 
-          <h5>@{c.user_id}:</h5> 
+          <h5>@{c.user.username}:</h5> 
 
           {c.content}<hr /> 
 

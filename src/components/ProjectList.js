@@ -11,7 +11,7 @@ class ProjectList extends React.Component{
             <>
             
             {this.props.projects.map(project => 
-                    
+                     
                         // project.name &&
                         <ProjectDetail 
                         key={project.id} 

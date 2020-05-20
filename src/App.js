@@ -72,11 +72,13 @@ handleLike = (id,newLike) => {
 })
   .then(resp => resp.json())
   .then(updatedProject =>  this.addLike(updatedProject)) 
+
 }
 
 
 addLike = (newProject)=>{
-      
+    
+
   let current_project = this.state.projects.reduce((acc,currVal) => { 
     if(currVal.id === newProject.id) {
        return acc.concat([newProject])
@@ -85,8 +87,18 @@ addLike = (newProject)=>{
     }
   }, [])
   
+let favorite=this.state.favorites.map(fav => {
+  if(fav.project.id === newProject.id ){
+    return {...fav, project: newProject }
+  }else{
+    return fav
+  }
+} )
+
+  
   this.setState({
-    projects: current_project
+    projects: current_project,
+    favorites: favorite
   })
 }
 
@@ -187,6 +199,8 @@ addProject=(newProject)=>{
 
 
   render(){
+
+    // console.log(this.state.favorites.map(p =>p.project.like))
 
     return(
       <React.Fragment>

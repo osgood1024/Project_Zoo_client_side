@@ -5,8 +5,8 @@ import ProjectList from './components/ProjectList'
 
 export class Favorite extends React.Component{
 
-state={
-    favorites:[], 
+// state={
+//     favorites:[]
     
     // [{
     //     "id": 85,
@@ -14,7 +14,7 @@ state={
     //     "project": {...},
     // }]
   
-}
+// }
 // componentDidMount(){
     // fetch('http://localhost:3000/favorites')
     // .then(resp => resp.json())
@@ -61,7 +61,7 @@ render(){
     // const search=this.state.favorites.filter(p => p.project.name.toLowerCase().includes(this.props.search.toLowerCase())).map(fav =>fav.project)
     // const search=this.state.favorites.map(fav => fav.project).filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
     // const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
-// console.log(search)
+// console.log(favorite_projects.map(p => p.id))
 
         return(
             <>
