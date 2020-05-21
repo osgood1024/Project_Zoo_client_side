@@ -117,26 +117,34 @@ handleFavorite =(ProjectId)=>{
       project_id: ProjectId
   })
 })
+.then(resp => resp.json())
+.then(newFav => this.setState({
+    favorites: [...this.state.projects,newFav]
+    })
+  )
 }
 
+
+
 handleFavoriteDel=(project_id,favorite_id)=>{
-fetch(`http://localhost:3000/favorites/${favorite_id}`, {
-method: "Delete",
-headers:{
-"content-type" : "application/json",
-accept : "application/json"
-}
-})
-.then(resp => resp.json())
-.then(()=> this.deleteFav(project_id))
+  console.log(favorite_id)
+    fetch(`http://localhost:3000/favorites/${favorite_id}`, {
+        method: "Delete",
+        headers:{
+          "content-type" : "application/json",
+          accept : "application/json"
+        }
+    })
+    .then(resp => resp.json())
+    .then(()=> this.deleteFav(project_id))
 }
 
 
 
 deleteFav=(id)=>{
-  let project =this.projects.filter(project => project.id !== id)
+  // let favproject =this.state.projects.filter(fav => fav.id !== id)
   this.setState({
-    projects: project
+    favorites: id
   })
 
 }
@@ -199,7 +207,7 @@ addProject=(newProject)=>{
 
 
   render(){
-
+console.log(this.state.favorites)
     return(
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />

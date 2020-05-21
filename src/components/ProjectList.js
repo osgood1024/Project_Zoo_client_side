@@ -1,21 +1,38 @@
 import React from 'react'
-// import {Card , ButtonToolbar} from 'react-bootstrap'
+import styled from 'styled-components'
 import ProjectDetail from './ProjectDetail'
+
+
+
+
+const Styles =styled.div `
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-around;
+    
+    
+  }
+
+`
 
 class ProjectList extends React.Component{
 
 
     render(){
+        // console.log(this.props.projects)
 
         return(
-            <>
-            
-            {this.props.projects.map(project => 
+            <Styles >
+            <div className={'container'}>
+            {this.props.projects.map(project => <div style={{padding:'0px', margin:"50px 10px 10px 10px"}}>
                      
-                        // project.name &&
+                        
                         <ProjectDetail 
                         key={project.id} 
-                        favorites={this.props.favorites}
+                        favorite={this.props.favorites}
                         users={this.props.users}
                         project={project}
                         comment={this.props.comments.filter(c => c.project_id === project.id)} 
@@ -26,9 +43,12 @@ class ProjectList extends React.Component{
                         handleDelComment={this.props.handleDelComment}
 
                         />
+                        </div>
                     )
             }
-            </>
+            </div>
+                    
+            </Styles>
            
         )
     }

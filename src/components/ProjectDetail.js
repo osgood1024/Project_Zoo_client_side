@@ -1,8 +1,17 @@
 import React, {Component} from 'react'
 import {Modal, Button, Image, Card, Form, Container} from 'react-bootstrap';
 import CommentList from './CommentList'
+import styled from 'styled-components'
 // import Emoji from 'a11y-react-emoji'
 
+const Styles =styled.div `
+
+.card{    
+  border-radius: 15px;
+}
+
+
+`
 
 
  class ProjectDetail extends Component {
@@ -48,10 +57,16 @@ handleFavoriteList = () =>{
     
     const{handleFavorite,handleFavoriteDel}=this.props
 
+    // let favorite_id=this.props.project.favorites.filter(f => f.id === favid.id)
+
     if(this.state.toggleFav){
       handleFavorite(id)
-    }else{
-      handleFavoriteDel(id,this.props.favorites.id)
+    }
+    else{
+      console.log(id)
+      console.log(this.props.project.favorites)
+      handleFavoriteDel(id, this.props.project.favorites.find(f => f.user_id === this.props.user.id).id)
+
     }
     this.setState({
       toggleFav : !this.state.toggleFav
@@ -83,15 +98,19 @@ handleSubmit = () =>{
     render(){
       const {project} = this.props;
       const {setModalShow} = this.state;
-      // console.log('setModalShow status in projectDetail', setModalShow)
-      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
       
+      // console.log(this.props.project.favorites.map(f => f.id))
+      // console.log(this.props.project)
+      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
+
+
         return(
           <>
-          <Card border="dark" style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
+          <Styles>
+          <Card border="dark"  style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
               <Card.Body style={{padding:'10px'}}>
                   <Card.Title>{project.name}</Card.Title>
-                  <Card.Img variant="top" src={project.image}/>
+                  <Card.Img variant="top" style={{ width: '100%' , height:'70%'}} src={project.image}/>
               </Card.Body>
           </Card> 
 
@@ -117,7 +136,7 @@ handleSubmit = () =>{
             }
             </Button> 
 
-            <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
+            <Button variant="outline-dark" onClick={()=>this.handleFavoriteList()}> 
              {/* <Emoji symbol="⭐"/>  */}
              {
                this.state.toggleFav ? "⭐Add to Favorite" : "Remove from Favorite"
@@ -184,6 +203,8 @@ handleSubmit = () =>{
               <Button onClick={this.onClose}>Close</Button>
             </Modal.Footer>
           </Modal>
+
+          </Styles>
       </>
 
         )
