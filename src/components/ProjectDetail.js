@@ -10,6 +10,10 @@ const Styles =styled.div `
   border-radius: 15px;
 }
 
+.card:hover{
+  transform:scale(1.1);
+}
+
 .show_name{
   color: white;
   font-size: 20px ;
