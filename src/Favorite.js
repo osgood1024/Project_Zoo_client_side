@@ -59,10 +59,10 @@ export class Favorite extends React.Component{
 
 
 render(){
-    const favorite_projects = this.props.favorites.filter(fav => fav.user.id  === 1).map(fav => fav.project)
+    const favorite_projects = this.props.projects.filter(project => project.favorites.some((fav)=> fav.user_id  === 1))
+    const search=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
 
-const search=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
-
+// console.log(favorite_projects)
         return(
             <>
         {

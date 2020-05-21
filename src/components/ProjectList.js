@@ -28,7 +28,6 @@ class ProjectList extends React.Component{
             <div className={'container'}>
             {this.props.projects.map(project => <div style={{padding:'0px', margin:"50px 10px 10px 10px"}}>
                      
-                        
                         <ProjectDetail 
                         key={project.id} 
                         favorite={this.props.favorites}

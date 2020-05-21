@@ -13,11 +13,14 @@ const Styles =styled.div `
 
 .form-control {
     border-radius: 15px;
+    width: 100%;
+    padding: 10px ;
     
    
 }
 .button{
     border-radius: 50px;
+    
 }
 .navbar-brand, .navbar-nav .nav-link{
     padding: 20px;
@@ -25,6 +28,11 @@ const Styles =styled.div `
     &:hover{
         color: white;
     }
+}
+
+.navbar-brand{
+    font-size: 20px;
+    margin: 0px 25px 0px 25px;
 }
 
 img{
@@ -41,10 +49,10 @@ export const NavigationBar=(props)=>(
     
     <Styles>
         <Navbar expand='lg'>
-            <Navbar.Brand href="/">Project Tracker</Navbar.Brand>
+            <Navbar.Brand href="/">Project Zoo </Navbar.Brand>
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
             <Form inline>
-                <FormControl type="text" placeholder="Search Project" className="mr-sm-3" value={props.search} onChange={(e)=>props.handleSearch(e)}/>
+                <FormControl type="text" placeholder="Search Project"  className="mr-sm-2" value={props.search} onChange={(e)=>props.handleSearch(e)}/>
             </Form>
                 <Button className="rounded-pill" variant="outline-success">Search</Button>
             <Navbar.Collapse id ="basic-navbar-nav">

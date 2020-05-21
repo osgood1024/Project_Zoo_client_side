@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { Button, Form, Segment, TextArea } from 'semantic-ui-react'
 import styled from 'styled-components'
-
 const Styles =styled.div `
 .form_layout{
     margin:50px !important;
@@ -22,7 +21,7 @@ p{
 
 `
 
-export class  SubmitProject extends Component {
+export class SubmitProject extends Component {
 
     state={
         name : "" ,
@@ -57,12 +56,20 @@ export class  SubmitProject extends Component {
           })
         })
         .then(resp => resp.json())
-        .then(newSubmit=> this.props.newProject(newSubmit)
-        )
-        .then(
-        this.props.history.push('/')
-        )
-    }
+        .then(newSubmit=> {
+            if(newSubmit.status===490){
+                alert(newSubmit.errors)
+            }
+            else{
+
+                this.props.newProject(newSubmit)
+                
+                    
+            }
+        }
+    )
+        
+}
     
         
     

@@ -62,8 +62,8 @@ const Styles =styled.div `
   state={
     setModalShow: false,
     toggle: true,
-    toggleFav: true,
-    description:""
+    description:"",
+    // toggleFav: true,
   }
 
 
@@ -98,23 +98,35 @@ else{
 handleFavoriteList = () =>{
     const{id}=this.props.project
     
-    const{handleFavorite,handleFavoriteDel}=this.props
+    const{handleFavorite}=this.props
 
-    // let favorite_id=this.props.project.favorites.filter(f => f.id === favid.id)
+    handleFavorite(id)
 
-    if(this.state.toggleFav){
-      handleFavorite(id)
-    }
-    else{
-      console.log(id)
-      console.log(this.props.project.favorites)
-      handleFavoriteDel(id, this.props.project.favorites.find(f => f.user_id === this.props.user.id).id)
+    // if(this.state.toggleFav){
+    //   handleFavorite(id)
+    // }
+    // else{
+    //   console.log(id)
+    //   console.log(this.props.project.favorites)
+    //   handleFavoriteDel(id, this.props.project.favorites.find(f => f.user_id === this.props.user.id).id)
 
-    }
-    this.setState({
-      toggleFav : !this.state.toggleFav
-    })
+    // }
+    // this.setState({
+    //   toggleFav : !this.state.toggleFav
+    // })
 }
+
+
+handleDelFav=()=>{
+  const{id}=this.props.project
+
+  const{handleFavoriteDel}=this.props
+
+  let favorite_id=this.props.project.favorites.find(f => f.user_id === 1).id
+
+  handleFavoriteDel(id, favorite_id)
+}
+
 
 handleChange=(e)=>{
   this.setState({
@@ -136,15 +148,14 @@ handleSubmit = () =>{
 }
 
 
- 
- 
     render(){
       const {project} = this.props;
       const {setModalShow} = this.state;
       
-      // console.log(this.props.project.favorites.map(f => f.id))
-      // console.log(this.props.project)
+  
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
+
+      console.log(this.props.favorite)
 
 
         return(
@@ -171,22 +182,23 @@ handleSubmit = () =>{
             </Modal.Header>
             <Modal.Body>
 
-              <p>
+           <p>
             <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > 
-            {/* <Emoji symbol="❤"/> */}
             {
-              this.state.toggle ? "❤Like" : "Unlike"
+              this.state.toggle ? "❤ Like" : "Unlike"
             }
             </Button> 
 
-            <Button variant="outline-dark" onClick={()=>this.handleFavoriteList()}> 
-             {/* <Emoji symbol="⭐"/>  */}
-             {
-               this.state.toggleFav ? "⭐Add to Favorite" : "Remove from Favorite"
-             }
-            
-            </Button>
-              </p>
+                {this.props.favorite ? 
+                    <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
+                    {"⭐Add to Favorite"}
+                    </Button> 
+                      :
+                    <Button style={{margin: '5px'}} variant="outline-danger" onClick={this.handleDelFav}>
+                      Remove Favorite
+                    </Button>
+                }
+          </p>
 
               <p>
                 <Image src={this.props.project.image} fluid />
@@ -198,7 +210,7 @@ handleSubmit = () =>{
               </p>
 
               <p>
-                Like: {this.props.project.like} 
+                  Like: {"❤ "+this.props.project.like} 
               </p>
               <p>
                   Owner: {userName}

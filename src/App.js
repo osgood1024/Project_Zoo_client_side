@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import {BrowserRouter as Router,Route, Switch} from 'react-router-dom'
+import {Route,Switch} from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import { Home } from './Home';
 import { Favorite } from './Favorite';
 import { SubmitProject } from './SubmitProject' ;
@@ -10,7 +11,8 @@ import { NavigationBar } from './components/NavigationBar';
 
 
 
-class App extends Component{
+ class App extends Component{
+
   state={
     projects:[],
     comments:[],
@@ -118,10 +120,18 @@ handleFavorite =(ProjectId)=>{
   })
 })
 .then(resp => resp.json())
-.then(newFav => this.setState({
-    favorites: [...this.state.projects,newFav]
-    })
-  )
+.then(newFav => {
+    if(newFav.status===490){
+      alert(newFav.errors)
+    }
+    else{
+      this.setState({
+        favorites: [...this.state.projects,newFav]
+        })
+    }
+  }
+)
+
 }
 
 
@@ -142,9 +152,9 @@ handleFavoriteDel=(project_id,favorite_id)=>{
 
 
 deleteFav=(id)=>{
-  // let favproject =this.state.projects.filter(fav => fav.id !== id)
+  let favproject =this.state.projects.filter(fav => fav.id !== id)
   this.setState({
-    favorites: id
+    projects: favproject
   })
 
 }
@@ -167,12 +177,17 @@ handleComment=(user_id,ProjectId,newcontent)=>{
           })
         })
         .then(resp => resp.json())
-        .then(newComment => 
-        this.setState({
-          comments: [...this.state.comments,newComment]
-        })
+        .then(newComment => {
+          if(newComment.status === 490){
+            alert(newComment.errors)
+          }else{
+            this.setState({
+              comments: [...this.state.comments,newComment]
+            })
+
+          }
+        }
     )
-    // .then(error => console.error(error))
     
 }
 
@@ -204,17 +219,19 @@ deleteComment=(cid)=>{
 addProject=(newProject)=>{
   this.setState({
     projects:[...this.state.projects,newProject]
-  })
+  }, () => this.props.history.push('/'))
+    
+  
 }
 
 
-  render(){
-console.log(this.state.favorites)
+ render(){
+// console.log(this.state.favorites)
     return(
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
-          <Router>
+         
             <Switch>
               <Route exact path="/" render={props => <Home {...props} 
                search={this.state.searchTerm} 
@@ -247,7 +264,7 @@ console.log(this.state.favorites)
               newProject={this.addProject} />}/>
               <Route path="/login" component={LogIn}/>
             </Switch>
-          </Router>
+          
         </Layout>
         
       </React.Fragment>
@@ -257,4 +274,10 @@ console.log(this.state.favorites)
 
 }
 
-export default App;
+// export default App;
+
+export default withRouter(App)
+// ReactDOM.render(<Route><App /></Route>, document.getElementById('root'));
+
+
+
