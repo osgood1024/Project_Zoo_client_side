@@ -38,8 +38,12 @@ const Styles =styled.div `
 
 
 .container:hover .overlay {
-  opacity: 1;
+  opacity: 0.85;
 }
+
+// .container:hover .card-img {
+//   opacity: 0.3;
+// }
 
 // .card-title{
 //   font-family: 'Do Hyeon', sans-serif;
