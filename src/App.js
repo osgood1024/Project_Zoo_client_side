@@ -172,6 +172,8 @@ handleComment=(user_id,ProjectId,newcontent)=>{
           comments: [...this.state.comments,newComment]
         })
     )
+    // .then(error => console.error(error))
+    
 }
 
 
