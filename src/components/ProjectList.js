@@ -13,7 +13,6 @@ const Styles =styled.div `
     justify-content: center;
     justify-content: space-around;
     
-    
   }
 
 `

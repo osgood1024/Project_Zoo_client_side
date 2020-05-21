@@ -10,6 +10,41 @@ const Styles =styled.div `
   border-radius: 15px;
 }
 
+.show_name{
+  color: white;
+  font-size: 20px ;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  border-radius: 15px;
+  background-color: black;
+}
+
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+// .card-title{
+//   font-family: 'Do Hyeon', sans-serif;
+// }
+
 
 `
 
@@ -107,10 +142,10 @@ handleSubmit = () =>{
         return(
           <>
           <Styles>
-          <Card border="dark"  style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
-              <Card.Body style={{padding:'10px'}}>
-                  <Card.Title>{project.name}</Card.Title>
-                  <Card.Img variant="top" style={{ width: '100%' , height:'70%'}} src={project.image}/>
+          <Card border="dark" className={"container"} style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
+                  <Card.Img variant="top"  style={{ display: "block" , width: '100%' , height:'70%'}} src={project.image}/>
+              <Card.Body className={"overlay"} style={{padding:'10px'}}>
+                  <Card.Title className={"show_name"} >{project.name}</Card.Title>
               </Card.Body>
           </Card> 
 
