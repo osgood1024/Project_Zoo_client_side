@@ -1,5 +1,7 @@
   
 import React from "react"
+// import {Card} from 'react-bootstrap'
+
 
 
 
@@ -8,11 +10,15 @@ import React from "react"
 
         <div>
        
+
             <h4>
-                Comments:
+                Response(s):
             </h4>
-      
+            <hr/>
+        
              {props.comments}
+
+
 
       </div>
    

@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
-import {Modal, Button, Image, Card, Form, Container} from 'react-bootstrap';
+import {Modal, Button, Image, Card, Form} from 'react-bootstrap';
 import CommentList from './CommentList'
 import styled from 'styled-components'
-// import Emoji from 'a11y-react-emoji'
+// import {Transition, } from 'react-spring/renderprops'
+
+
+
+
 
 const Styles =styled.div `
 
@@ -49,12 +53,13 @@ const Styles =styled.div `
 //   opacity: 0.3;
 // }
 
-// .card-title{
-//   font-family: 'Do Hyeon', sans-serif;
-// }
+p{
+  font-family: 'Do Hyeon', sans-serif;
+}
 
 
 `
+
 
 
  class ProjectDetail extends Component {
@@ -65,6 +70,9 @@ const Styles =styled.div `
     description:"",
     // toggleFav: true,
   }
+
+
+
 
 
 onClose = (e) => {
@@ -139,7 +147,8 @@ handleChange=(e)=>{
 handleSubmit = () =>{
   const{id}=this.props.project
   const{handleComment}=this.props
-
+  
+  console.log(this.state.description)
   handleComment(1,id,this.state.description)
 
   this.setState({
@@ -151,16 +160,16 @@ handleSubmit = () =>{
     render(){
       const {project} = this.props;
       const {setModalShow} = this.state;
-      
+    
   
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
 
-      console.log(this.props.favorite)
-
-
+      
+      
         return(
           <>
           <Styles>
+       
           <Card border="dark" className={"container"} style={{ width: '18rem' , height:'15rem'}} onClick={() =>this.setState({setModalShow: true })}>
                   <Card.Img variant="top"  style={{ display: "block" , width: '100%' , height:'70%'}} src={project.image}/>
               <Card.Body className={"overlay"} style={{padding:'10px'}}>
@@ -183,10 +192,11 @@ handleSubmit = () =>{
             <Modal.Body>
 
            <p>
+
             <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > 
-            {
-              this.state.toggle ? "❤ Like" : "Unlike"
-            }
+
+             {this.state.toggle ? "❤ Like" : "Unlike"}
+            
             </Button> 
 
                 {this.props.favorite ? 
@@ -204,8 +214,8 @@ handleSubmit = () =>{
                 <Image src={this.props.project.image} fluid />
               </p>
 
-      <Container>
-              <p>
+    
+              <p className={"description"}>
                 {this.props.project.description}
               </p>
 
@@ -221,14 +231,14 @@ handleSubmit = () =>{
                   Visit Project
                 </a>
               </p>
-      </Container>
+     
 <br/>
-<Container>
+
           <h4>Discussion</h4>
           
-          <Form.Control as="textarea" rows="3" name="description" value={this.state.description} onChange={this.handleChange} placeholder="What are your thought in this project..? "/>
+          <Form.Control as="textarea" rows="3" name="description" value={this.state.description} onChange={this.handleChange} placeholder="What are your thought in this project? "/>
           <br/>
-          <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" onClick={this.handleSubmit} >Post</Button>
+          <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" onClick={this.handleSubmit} >Post a Comment </Button>
           <br/>
           <br/>
 
@@ -237,10 +247,11 @@ handleSubmit = () =>{
           <CommentList comments={this.props.comment.map(c => 
             
           <p> 
-
+            {c.user.username === "Osgood" &&
           <Button type="button" className="close" aria-label="Close" onClick={()=>this.props.handleDelComment(c.id)}>
             <span aria-hidden="true">&times;</span>
           </Button>
+          }
 
           <h5>@{c.user.username}:</h5> 
 
@@ -251,12 +262,12 @@ handleSubmit = () =>{
 
           }/>
 
-</Container>
+
 
             </Modal.Body>
-            <Modal.Footer>
+            {/* <Modal.Footer>
               <Button onClick={this.onClose}>Close</Button>
-            </Modal.Footer>
+            </Modal.Footer> */}
           </Modal>
 
           </Styles>
