@@ -160,8 +160,6 @@ deleteFav=(id)=>{
 }
 
 
-
-
 handleComment=(user_id,ProjectId,newcontent)=>{
 
     fetch('http://localhost:3000/comments', {
