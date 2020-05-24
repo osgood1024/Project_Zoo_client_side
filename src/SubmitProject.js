@@ -41,7 +41,7 @@ export class SubmitProject extends Component {
     }
 
     handleCategory=(e,data)=>{
-        console.log(data.value)
+        
         this.setState({
             category: data.value
         })
@@ -175,6 +175,7 @@ render(){
                 <p>Category:</p>
                 <Dropdown fluid placeholder='Select Category' 
                 selection
+                search
                 options ={CategoryOptions}
                 value={this.state.category} 
                 onChange={this.handleCategory}
