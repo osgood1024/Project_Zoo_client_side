@@ -1,10 +1,7 @@
 import React from 'react';
 import {Nav, Navbar,Form, Button, FormControl} from 'react-bootstrap'
 import styled from 'styled-components'
-
 import {NavLink} from'react-router-dom'
-
-
 
 
 
@@ -48,8 +45,6 @@ img{
     border-radius: 50%;
     margin :10px;
 }
-
-
 
 
 `;
