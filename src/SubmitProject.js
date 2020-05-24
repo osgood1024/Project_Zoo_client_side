@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Form, Segment, TextArea } from 'semantic-ui-react'
+import { Button, Form, Segment, TextArea, Dropdown } from 'semantic-ui-react'
 import styled from 'styled-components'
 import {Spring} from 'react-spring/renderprops'
 
@@ -30,12 +30,20 @@ export class SubmitProject extends Component {
         name : "" ,
         link: "" ,
         image: "" ,
+        category: null,
         description: ""
     }
 
     handleChange=(e)=>{
         this.setState({
             [e.target.name] : e.target.value
+        })
+    }
+
+    handleCategory=(e,data)=>{
+        console.log(data.value)
+        this.setState({
+            category: data.value
         })
     }
 
@@ -53,6 +61,7 @@ export class SubmitProject extends Component {
             name : this.state.name,
             link: this.state.link,
             image: this.state.image ,
+            category: this.state.category,
             description: this.state.description,
             like: 0
              
@@ -77,6 +86,74 @@ export class SubmitProject extends Component {
 
 
 render(){
+    console.log(this.state)
+
+    const CategoryOptions=[
+         {
+            key: 'tech',
+            text: 'technology',
+            value: 'technology',
+            
+          },
+          {
+            key: 'health',
+            text: 'health',
+            value: 'health',
+            
+          },
+          {
+            key: 'entertainment',
+            text: 'entertainment',
+            value: 'entertainment',
+            
+          },
+          {
+            key: 'design',
+            text: 'design tool',
+            value: 'design tool',
+            
+          },
+          {
+            key: 'portfolio',
+            text: 'portfolio',
+            value: 'portfolio',
+            
+          },
+          {
+            key: 'education',
+            text: 'education',
+            value: 'education',
+            
+          },
+          {
+            key: 'game',
+            text: 'game',
+            value: 'game',
+            
+          },
+          {
+            key: 'productivity',
+            text: 'productivity',
+            value: 'productivity',
+            
+          },
+          {
+            key: 'news',
+            text: 'news',
+            value: 'news',
+            
+          },
+          {
+            key: 'other',
+            text: 'other',
+            value: 'other',
+            
+          },
+
+    ]
+
+   
+
     return(
         <Styles>
             <Spring
@@ -94,6 +171,19 @@ render(){
                 <Form.Group widths='equal'>
                     <Form.Input fluid label='Project Name:' placeholder='what is your project topic?' name='name' value={this.state.name} onChange={this.handleChange} />
                 </Form.Group>
+                
+                <p>Category:</p>
+                <Dropdown fluid placeholder='Select Category' 
+                selection
+                options ={CategoryOptions}
+                value={this.state.category} 
+                onChange={this.handleCategory}
+                />
+
+    
+
+               
+
                     {/* <Form.Input fluid label='# Tag :' placeholder='#todolist #react #web_dev....' /> */}
                 <Form.Group widths="grouped">
                     <Form.Input fluid label='Website live link or Github Repo:' placeholder='your project link/ Github repo..' name='link' value={this.state.link} onChange={this.handleChange}/>
