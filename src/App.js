@@ -4,10 +4,12 @@ import { withRouter } from 'react-router-dom';
 import { Home } from './Home';
 import { Favorite } from './Favorite';
 import { SubmitProject } from './SubmitProject' ;
-import { LogIn } from './components/LogIn' ;
+// import { LogIn } from './components/LogIn' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+// import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Transition, animated } from 'react-spring/renderprops'
+
 
 
 
@@ -230,20 +232,22 @@ addProject=(newProject)=>{
  render(){
 // console.log(this.state.favorites)
     return(
+      <animated.div>
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
           <Route 
-          render={({location,...rest})=>(
-
+          render={({location})=>(
           
+            <Transition
+            native
+            items={location}
+            keys={location.pathname}
+            from={{ transform: 'translateY(100px)', opacity: 0 }}
+            enter={{ transform: 'translateY(0px)', opacity: 1 }}
+            leave={{ transform: 'translateY(100px)', opacity: 0 }}>  
 
-        <TransitionGroup className="transition-group">
-        <CSSTransition
-          key={location.key}
-          timeout={{ enter: 300, exit: 300 }}
-          classNames="fade"
-        >
+        
          
             <Switch location={location}>
               <Route exact path="/" render={props => <Home {...props} 
@@ -259,6 +263,7 @@ addProject=(newProject)=>{
                handleDelComment={this.handleDelComment}
                
                />}/>
+               
               <Route path="/favorite" render={props => <Favorite {...props} 
               search={this.state.searchTerm}
               favorites={this.state.favorites}
@@ -275,17 +280,20 @@ addProject=(newProject)=>{
               />} />
               <Route path="/submitproject" render={ props => <SubmitProject {...props} projects={this.state.projects} 
               newProject={this.addProject} />}/>
-              <Route path="/login" component={LogIn}/>
+              {/* <Route path="/login" component={LogIn}/> */}
             </Switch>
 
-            </CSSTransition>
-      </TransitionGroup>
+          
+          </Transition>
+        
           )}
+        
           />
-        </Layout>
+          </Layout>
         
       </React.Fragment>
      
+    </animated.div>
     )
   }
 
