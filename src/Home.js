@@ -9,6 +9,7 @@ import ProjectList from './components/ProjectList'
 export class Home extends React.Component{
     render(){
 
+        console.log(this.props.projects)
         const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
         
         return(

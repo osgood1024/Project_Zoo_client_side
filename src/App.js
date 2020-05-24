@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
-import {Route,Switch} from 'react-router-dom'
 import { withRouter } from 'react-router-dom';
-import { Home } from './Home';
-import { Favorite } from './Favorite';
-import { SubmitProject } from './SubmitProject' ;
-import { LogIn } from './components/LogIn' ;
+// import {Route,Switch} from 'react-router-dom'
+// import { Home } from './Home';
+// import { Favorite } from './Favorite';
+// import { SubmitProject } from './SubmitProject' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
+import {AppContainer} from './AppContainer';
+// import { LogIn } from './components/LogIn' ;
 
 
 
@@ -79,8 +80,6 @@ handleLike = (id,newLike) => {
 
 
 addLike = (newProject)=>{
-    
-
   let current_project = this.state.projects.reduce((acc,currVal) => { 
     if(currVal.id === newProject.id) {
        return acc.concat([newProject])
@@ -107,6 +106,7 @@ let favorite=this.state.favorites.map(fav => {
 
 
 handleFavorite =(ProjectId)=>{
+  console.log(ProjectId)
 
   fetch(`http://localhost:3000/favorites`, {
     method: "POST",
@@ -125,6 +125,7 @@ handleFavorite =(ProjectId)=>{
       alert(newFav.errors)
     }
     else{
+       console.log('new fav', newFav)
       this.setState({
         favorites: [...this.state.projects,newFav]
         })
@@ -161,7 +162,6 @@ deleteFav=(id)=>{
 
 
 
-
 handleComment=(user_id,ProjectId,newcontent)=>{
 
     fetch('http://localhost:3000/comments', {
@@ -190,7 +190,6 @@ handleComment=(user_id,ProjectId,newcontent)=>{
     )
     
 }
-
 
 
 handleDelComment=(cid) =>{
@@ -226,14 +225,16 @@ addProject=(newProject)=>{
 
 
  render(){
-// console.log(this.state.favorites)
+
     return(
+
+
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
          
-            <Switch>
-              <Route exact path="/" render={props => <Home {...props} 
+           
+              <AppContainer
                search={this.state.searchTerm} 
                favorites={this.state.favorites}
                users={this.state.users}
@@ -244,26 +245,8 @@ addProject=(newProject)=>{
                handleLike={this.handleLike}
                handleComment={this.handleComment}
                handleDelComment={this.handleDelComment}
-               
-               />}/>
-              <Route path="/favorite" render={props => <Favorite {...props} 
-              search={this.state.searchTerm}
-              favorites={this.state.favorites}
-              users={this.state.users}
-              comments={this.state.comments}
-              projects={this.state.projects}
-              handleFavorite={this.handleFavorite} 
-              handleFavoriteDel={this.handleFavoriteDel}
-              handleLike={this.handleLike}
-              handleComment={this.handleComment}
-              handleDelComment={this.handleDelComment}
-            
+               />
               
-              />} />
-              <Route path="/submitproject" render={ props => <SubmitProject {...props} projects={this.state.projects} 
-              newProject={this.addProject} />}/>
-              <Route path="/login" component={LogIn}/>
-            </Switch>
           
         </Layout>
         
@@ -274,10 +257,8 @@ addProject=(newProject)=>{
 
 }
 
-// export default App;
 
 export default withRouter(App)
-// ReactDOM.render(<Route><App /></Route>, document.getElementById('root'));
 
 
 
