@@ -103,10 +103,14 @@ else{
   })
 }
 
-handleFavoriteList = () =>{
+
+handleFavoriteList = (e) =>{
+  debugger;
+  console.log("handle favorite", e)
     const{id}=this.props.project
     
     const{handleFavorite}=this.props
+    
 
     handleFavorite(id)
 
@@ -161,11 +165,8 @@ handleSubmit = () =>{
       const {project} = this.props;
       const {setModalShow} = this.state;
     
-  
       let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
 
-      
-      
         return(
           <>
           <Styles>

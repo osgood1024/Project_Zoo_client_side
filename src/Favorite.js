@@ -1,6 +1,7 @@
 import React from 'react'
 import ProjectList from './components/ProjectList'
-// import {Card , ButtonToolbar} from 'react-bootstrap'
+import {Spring} from 'react-spring/renderprops'
+
 
 
 export class Favorite extends React.Component{
@@ -58,34 +59,45 @@ export class Favorite extends React.Component{
 
 
 
+
 render(){
     const favorite_projects = this.props.projects.filter(project => project.favorites.some((fav)=> fav.user_id  === 1))
     const search=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
 
-// console.log(favorite_projects)
         return(
-            <>
-        {
-              favorite_projects &&  
 
-             <ProjectList
-              users={this.props.users} 
-              projects={search} 
-              comments={this.props.comments} 
-              handleFavorite={this.props.handleFavorite} 
-              handleFavoriteDel={this.props.handleFavoriteDel}
-              handleLike={this.props.handleLike}
-              handleComment={this.props.handleComment}
-              handleDelComment={this.props.handleDelComment}
+<Spring
+from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(0,-40px,0)'}}
+to={{opacity: 1,  marginLef:20, transform: 'translate3d(0,0px,0)'}}
 
-             
-             />
+config={{delay: 500, duration:1000}}
+>
+    {props => (
+    <div style={props}>
 
-        }
-              
-               
-            
-            </>
+                        <div>
+                    {
+                        favorite_projects &&  
+
+                        <ProjectList
+                        users={this.props.users} 
+                        projects={search} 
+                        comments={this.props.comments} 
+                        handleFavorite={this.props.handleFavorite} 
+                        handleFavoriteDel={this.props.handleFavoriteDel}
+                        handleLike={this.props.handleLike}
+                        handleComment={this.props.handleComment}
+                        handleDelComment={this.props.handleDelComment}
+
+                        
+                        />
+                    }
+                        </div>
+
+</div>
+        )}
+    </Spring>
+    
            
         )
     }

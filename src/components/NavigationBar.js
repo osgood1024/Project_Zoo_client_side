@@ -1,8 +1,9 @@
 import React from 'react';
 import {Nav, Navbar,Form, Button, FormControl} from 'react-bootstrap'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom';
 
-import {NavLink} from'react-router-dom'
+
 
 
 
@@ -26,17 +27,14 @@ const Styles =styled.div `
     border-radius: 50px;
     
 }
-.navbar-brand, .navbar-light .navbar-nav .nav-link{
-    
+.navbar-brand,  .navbar-nav .nav-link{
     padding: 20px;
+    border-radius: 50px;
     color: #FF8C00;
-    &:hover, &:focus, &:active {
+    &:hover {
         color: white;
-        background-color: transparent;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-      }
+       
+    }
 }
 
 .navbar-brand{
@@ -51,15 +49,15 @@ img{
 
 
 
-
 `;
 
 
-export const NavigationBar=(props)=>(
+export const NavigationBar=(props)=>{
     
+    return (
     <Styles>
         <Navbar expand='lg'>
-            <Navbar.Brand href="/" >Project Zoo </Navbar.Brand>
+            <Navbar.Brand href="/">Project Zoo </Navbar.Brand>
 
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
            
@@ -70,14 +68,15 @@ export const NavigationBar=(props)=>(
                 <Button className="rounded-pill" variant="outline-success">Search</Button>
             
             <Navbar.Collapse id ="basic-navbar-nav">
-                <Nav className="ml-auto">
-                    <NavLink exact to="/" className="nav-item nav-link" activeClassName="nav-item nav-link active" >Home</NavLink>
-                    <NavLink exact to="/submitproject" className="nav-item nav-link" activeClassName="nav-item nav-link active" >Submit Project</NavLink>
-                    <NavLink exact to="/favorite" className="nav-item nav-link" activeClassName="nav-item nav-link active" >Favorite</NavLink>
-                    <img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /> 
+                <Nav className="ml-auto" as={Link} variant="pills" defaultActiveKey="/" >
+                    <Nav.Item><Nav.Link as={Link} to={"/"} eventKey={"link-0"}>Home</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link as={Link} to={"/submitproject"} eventKey={"link-1"}>Submit Project</Nav.Link></Nav.Item>
+                    <Nav.Item><Nav.Link as={Link} to={"/favorite"} eventKey={"link-2"} >Favorite</Nav.Link></Nav.Item>
+                    <Nav.Item><img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /></Nav.Item>
                 </Nav>
             </Navbar.Collapse>
 
         </Navbar>
     </Styles>
-)
+    )
+}

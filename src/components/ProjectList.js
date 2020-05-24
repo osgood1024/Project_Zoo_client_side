@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ProjectDetail from './ProjectDetail'
-import {Spring} from 'react-spring/renderprops'
+// import {Spring} from 'react-spring/renderprops'
 
 
 
@@ -28,17 +28,6 @@ class ProjectList extends React.Component{
         return(
             <Styles >
 
-            <Spring
-                // delay={300}
-                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(0,-40px,0)'}}
-                to={{opacity: 1,  marginLef:20, transform: 'translate3d(0,0px,0)'}}
-                
-                config={{delay: 500, duration:1000}}
-            >
-
-{props => (
-     <div style={props}>
-
             <div className={'container'}>
             {this.props.projects.map(project => <div style={{padding:'0px', margin:"50px 10px 10px 10px"}}>
                      
@@ -60,9 +49,7 @@ class ProjectList extends React.Component{
             }
             </div>
 
-    </div>
-)}
-            </Spring>
+
                     
             </Styles>
            

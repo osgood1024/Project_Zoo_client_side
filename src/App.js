@@ -79,8 +79,6 @@ handleLike = (id,newLike) => {
 
 
 addLike = (newProject)=>{
-    
-
   let current_project = this.state.projects.reduce((acc,currVal) => { 
     if(currVal.id === newProject.id) {
        return acc.concat([newProject])
@@ -107,6 +105,7 @@ let favorite=this.state.favorites.map(fav => {
 
 
 handleFavorite =(ProjectId)=>{
+  console.log(ProjectId)
 
   fetch(`http://localhost:3000/favorites`, {
     method: "POST",
@@ -125,6 +124,7 @@ handleFavorite =(ProjectId)=>{
       alert(newFav.errors)
     }
     else{
+       console.log('new fav', newFav)
       this.setState({
         favorites: [...this.state.projects,newFav]
         })
@@ -224,9 +224,14 @@ addProject=(newProject)=>{
   
 }
 
+// shouldComponentUpdate(props, state) {
+//   return true;
+
+// }
+
 
  render(){
-// console.log(this.state.favorites)
+   console.log("HERERERERES")
     return(
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
@@ -244,7 +249,6 @@ addProject=(newProject)=>{
                handleLike={this.handleLike}
                handleComment={this.handleComment}
                handleDelComment={this.handleDelComment}
-               
                />}/>
               <Route path="/favorite" render={props => <Favorite {...props} 
               search={this.state.searchTerm}
