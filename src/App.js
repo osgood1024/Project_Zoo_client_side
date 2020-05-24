@@ -6,8 +6,13 @@ import { withRouter } from 'react-router-dom';
 // import { SubmitProject } from './SubmitProject' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
+<<<<<<< HEAD
 import {AppContainer} from './AppContainer';
 // import { LogIn } from './components/LogIn' ;
+=======
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
+>>>>>>> master
 
 
 
@@ -232,9 +237,25 @@ addProject=(newProject)=>{
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
+          <Route 
+          render={({location,...rest})=>(
+
+          
+
+        <TransitionGroup className="transition-group">
+        <CSSTransition
+          key={location.key}
+          timeout={{ enter: 300, exit: 300 }}
+          classNames="fade"
+        >
          
+<<<<<<< HEAD
            
               <AppContainer
+=======
+            <Switch location={location}>
+              <Route exact path="/" render={props => <Home {...props} 
+>>>>>>> master
                search={this.state.searchTerm} 
                favorites={this.state.favorites}
                users={this.state.users}
@@ -247,7 +268,20 @@ addProject=(newProject)=>{
                handleDelComment={this.handleDelComment}
                />
               
+<<<<<<< HEAD
           
+=======
+              />} />
+              <Route path="/submitproject" render={ props => <SubmitProject {...props} projects={this.state.projects} 
+              newProject={this.addProject} />}/>
+              <Route path="/login" component={LogIn}/>
+            </Switch>
+
+            </CSSTransition>
+      </TransitionGroup>
+          )}
+          />
+>>>>>>> master
         </Layout>
         
       </React.Fragment>
