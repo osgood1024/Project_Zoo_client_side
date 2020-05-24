@@ -7,7 +7,7 @@ import { SubmitProject } from './SubmitProject' ;
 import { LogIn } from './components/LogIn' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 
 
 
@@ -228,24 +228,15 @@ addProject=(newProject)=>{
 
 
  render(){
-// console.log(this.state.favorites)
     return(
+
+      
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
         <Layout>
-          <Route 
-          render={({location,...rest})=>(
-
-          
-
-        <TransitionGroup className="transition-group">
-        <CSSTransition
-          key={location.key}
-          timeout={{ enter: 300, exit: 300 }}
-          classNames="fade"
-        >
-         
-            <Switch location={location}>
+        
+            <Switch >
+              
               <Route exact path="/" render={props => <Home {...props} 
                search={this.state.searchTerm} 
                favorites={this.state.favorites}
@@ -278,23 +269,26 @@ addProject=(newProject)=>{
               <Route path="/login" component={LogIn}/>
             </Switch>
 
-            </CSSTransition>
-      </TransitionGroup>
-          )}
-          />
+      
         </Layout>
         
       </React.Fragment>
-     
-    )
-  }
+      
+
+    )}
 
 }
 
-// export default App;
+
+
+
+
+
+
+
+
 
 export default withRouter(App)
-// ReactDOM.render(<Route><App /></Route>, document.getElementById('root'));
 
 
 

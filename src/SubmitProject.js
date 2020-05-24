@@ -1,6 +1,10 @@
 import React, {Component} from 'react'
 import { Button, Form, Segment, TextArea } from 'semantic-ui-react'
 import styled from 'styled-components'
+import {Spring} from 'react-spring/renderprops'
+
+
+
 const Styles =styled.div `
 .form_layout{
     margin:50px !important;
@@ -17,7 +21,6 @@ p{
 .form{
     padding: 10px;
 }
-
 
 `
 
@@ -61,9 +64,7 @@ export class SubmitProject extends Component {
                 alert(newSubmit.errors)
             }
             else{
-
                 this.props.newProject(newSubmit)
-                
                     
             }
         }
@@ -78,6 +79,15 @@ export class SubmitProject extends Component {
 render(){
     return(
         <Styles>
+            <Spring
+                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,0,0)'}}
+                to={{opacity: 1,  marginLeff:20, transform: 'translate3d(0px,0,0)'}}
+                config={{delay: 500, duration:500}}
+            >
+
+{props => (
+     <div style={props}>
+
         <Segment inverted padded={"very"} className={'form_layout'}>
             <Form inverted  onSubmit={this.handleSubmit}>
 
@@ -102,6 +112,9 @@ render(){
 
             </Form>
         </Segment>
+            </div>
+            )}
+            </Spring>
         </Styles>
 
         )

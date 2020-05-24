@@ -1,6 +1,5 @@
 import React from 'react'
 import ProjectList from './components/ProjectList'
-// import {Spring} from 'react-spring/renderprops'
 
 
 
@@ -13,14 +12,7 @@ export class Home extends React.Component{
         const search=this.props.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
         
         return(
-            // <Spring
-            //     from={{opacity: 0}}
-            //     to={{opacity: 1}}
-            //     config={{delay: 1000, duration:1000}}
-            // >
-            //     {props => (
-            //     <div style={props}>
-
+           
             <div>
                <ProjectList 
                 projects={search} 
@@ -34,9 +26,7 @@ export class Home extends React.Component{
                 handleDelComment={this.props.handleDelComment}
                 />
             </div>
-        //  </div>
-            //     )}
-            // </Spring>
+       
         )
     }
 } 

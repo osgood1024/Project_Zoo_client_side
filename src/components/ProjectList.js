@@ -29,11 +29,9 @@ class ProjectList extends React.Component{
             <Styles >
 
             <Spring
-                // delay={300}
-                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(0,-40px,0)'}}
-                to={{opacity: 1,  marginLef:20, transform: 'translate3d(0,0px,0)'}}
-                
-                config={{delay: 500, duration:1000}}
+                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,0,0)'}}
+                to={{opacity: 1,  marginLeff:20, transform: 'translate3d(0px,0,0)'}}
+                config={{delay: 500, duration:500}}
             >
 
 {props => (
