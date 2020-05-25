@@ -26,7 +26,7 @@ const Styles =styled.div `
 .navbar-brand, .navbar-light .navbar-nav .nav-link{
     
     padding: 20px;
-    font-size: 17px;
+    font-size: 15px;
     color: #FF8C00;
     &:hover, &:focus, &:active {
         color: white;

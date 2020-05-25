@@ -90,7 +90,7 @@ render(){
 
     const CategoryOptions=[
          {
-            key: 'tech',
+            key: 'technology',
             text: 'technology',
             value: 'technology',
             

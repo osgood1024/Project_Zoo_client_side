@@ -20,7 +20,8 @@ import { NavigationBar } from './components/NavigationBar';
     comments:[],
     users:[],
     favorites:[],
-    searchTerm:''
+    searchTerm:'',
+    category: 'all',
   }
 
 
@@ -62,6 +63,25 @@ handleSearch=(e) =>{
 }
 
 
+filterProject = (category) => {
+
+  this.setState({
+    category: category
+  })
+  // const filterProject= this.state.projects.filter(project => project.category.toLowerCase() === category)
+    
+  // console.log(filterProject)
+
+  // return(
+   
+
+  //   category!=="All" ?  filterProject : this.state.projects
+
+  // )
+
+}
+
+
 handleLike = (id,newLike) => {
 
   fetch(` http://localhost:3000/projects/${id}`, {
@@ -99,7 +119,6 @@ let favorite=this.state.favorites.map(fav => {
   }
 } )
 
-  
   this.setState({
     projects: current_project,
     favorites: favorite
@@ -133,9 +152,7 @@ handleFavorite =(ProjectId)=>{
     }
   }
 )
-
 }
-
 
 
 handleFavoriteDel=(project_id,favorite_id)=>{
@@ -160,7 +177,6 @@ deleteFav=(id)=>{
   })
 
 }
-
 
 
 
@@ -227,9 +243,11 @@ addProject=(newProject)=>{
 }
 
 
- render(){
-    return(
+ render(){  
 
+  // console.log(this.state.projects)
+
+    return(
       
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
@@ -240,6 +258,8 @@ addProject=(newProject)=>{
               <Route exact path="/" render={props => <Home {...props} 
                search={this.state.searchTerm} 
                favorites={this.state.favorites}
+               filterProject={this.filterProject}
+               category={this.state.category}
                users={this.state.users}
                comments={this.state.comments}
                projects={this.state.projects}
@@ -252,6 +272,8 @@ addProject=(newProject)=>{
                />}/>
               <Route path="/favorite" render={props => <Favorite {...props} 
               search={this.state.searchTerm}
+              category={this.state.category}
+              filterProject={this.filterProject}
               favorites={this.state.favorites}
               users={this.state.users}
               comments={this.state.comments}

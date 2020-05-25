@@ -59,17 +59,22 @@ export class Favorite extends React.Component{
 
 
 render(){
+
+    const{category}=this.props
+
     const favorite_projects = this.props.projects.filter(project => project.favorites.some((fav)=> fav.user_id  === 1))
-    const search=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
+    const searchFilter=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
+    const search = category  === 'all' ? searchFilter : searchFilter.filter(project => project.category.toLowerCase() === category)
 
 // console.log(favorite_projects)
         return(
             <>
         {
-              favorite_projects &&  
+              search &&  
 
              <ProjectList
               users={this.props.users} 
+              filterProject={this.props.filterProject}
               projects={search} 
               comments={this.props.comments} 
               handleFavorite={this.props.handleFavorite} 
@@ -77,8 +82,6 @@ render(){
               handleLike={this.props.handleLike}
               handleComment={this.props.handleComment}
               handleDelComment={this.props.handleDelComment}
-
-             
              />
 
         }
