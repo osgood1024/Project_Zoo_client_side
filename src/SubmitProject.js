@@ -27,6 +27,7 @@ p{
 export class SubmitProject extends Component {
 
     state={
+        projects:[],
         name : "" ,
         link: "" ,
         image: "" ,
@@ -34,19 +35,40 @@ export class SubmitProject extends Component {
         description: ""
     }
 
+    componentDidMount(){
+
+        fetch('http://localhost:3000/projects')
+        .then(resp => resp.json())
+        .then(data => this.setState({
+            projects: data
+        })
+        )
+
+    }
+
+
+
+      
+    
     handleChange=(e)=>{
         this.setState({
             [e.target.name] : e.target.value
         })
     }
-
+    
     handleCategory=(e,data)=>{
         
         this.setState({
             category: data.value
         })
     }
-
+    
+    addProject=(newProject)=>{
+      this.setState({
+        projects:[...this.state.projects,newProject]
+      }, () => this.props.history.push('/'))
+        
+    }
 
     handleSubmit=(e) =>{
         e.preventDefault()
@@ -73,7 +95,7 @@ export class SubmitProject extends Component {
                 alert(newSubmit.errors)
             }
             else{
-                this.props.newProject(newSubmit)
+                this.addProject(newSubmit)
                     
             }
         }
@@ -86,7 +108,6 @@ export class SubmitProject extends Component {
 
 
 render(){
-    console.log(this.state)
 
     const CategoryOptions=[
          {
