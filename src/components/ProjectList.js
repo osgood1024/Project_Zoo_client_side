@@ -17,27 +17,14 @@ const Styles =styled.div `
 
 .select{
     margin: 50px 20px 20px 20px;
+    width: 200px;
+    float: right;
 }
-
-
 
 
 `
 
 
-const options = [
-    { value: 'technology', label: 'technology' },
-    { value: 'health', label: 'health' },
-    { value: 'entertainment', label: 'entertainment' },
-    { value: 'design tool', label: 'design tool' },
-    { value: 'portfolio', label: 'portfolio' },
-    { value: 'education', label: 'education' },
-    { value: 'game', label: 'game' },
-    { value: 'productivity', label: 'productivity' },
-    { value: 'news', label: 'news' },
-    { value: 'other', label: 'other' },
-    { value: 'all', label: 'All' },
-  ];
 
 
 
@@ -45,6 +32,19 @@ class ProjectList extends React.Component{
 
     
     render(){
+        const options = [
+            { value: 'technology', label: 'technology' },
+            { value: 'health', label: 'health' },
+            { value: 'entertainment', label: 'entertainment' },
+            { value: 'design tool', label: 'design tool' },
+            { value: 'portfolio', label: 'portfolio' },
+            { value: 'education', label: 'education' },
+            { value: 'game', label: 'game' },
+            { value: 'productivity', label: 'productivity' },
+            { value: 'news', label: 'news' },
+            { value: 'other', label: 'other' },
+            { value: 'all', label: 'All' },
+          ];
 
         return(
             <Styles >
@@ -57,8 +57,10 @@ class ProjectList extends React.Component{
 
 {props => (
      <div style={props} >
+         
 
 <div className={"select"}>
+    
 
         <Select 
         placeholder="Filter by..."
