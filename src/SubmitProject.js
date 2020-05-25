@@ -7,7 +7,7 @@ import {Spring} from 'react-spring/renderprops'
 
 const Styles =styled.div `
 .form_layout{
-    margin:50px !important;
+    margin:100px !important;
 }
 p{
     font-size: .92857143em;

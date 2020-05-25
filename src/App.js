@@ -42,6 +42,7 @@ import { NavigationBar } from './components/NavigationBar';
               <Route path="/favorite" render={props => <Favorite {...props}search={this.state.searchTerm}/>} 
               />
               <Route path="/submitproject" component={SubmitProject}/>
+              
               <Route path="/login" component={LogIn}/>
             </Switch>
 

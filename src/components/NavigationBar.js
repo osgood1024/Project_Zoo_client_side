@@ -7,10 +7,41 @@ import {NavLink} from'react-router-dom'
 
 const Styles =styled.div `
 .navbar{
-    height: 100px;
+    height: 150px;
     background-color: #222;
-    padding: 8px 40px 8px 20px;
+    padding: 8px 40px 40px 20px;
+    // border-bottom-left-radius:-50%;
+    // border-bottom-right-radius:-100%;
+
 }
+
+.navbar:before{
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 761px;
+    height: 80px;
+    background-color: white;
+    right: -49px;
+    top: 100px;
+
+}
+
+.navbar:after{
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 100% 50%;
+    width: 799px;
+    height: 70px;
+    background-color:  #222;
+    left: -70px;
+    top: 124px;
+
+}
+
+
 
 .form-control {
     border-radius: 15px;
@@ -23,7 +54,7 @@ const Styles =styled.div `
     border-radius: 50px;
     
 }
-.navbar-brand, .navbar-light .navbar-nav .nav-link{
+ .navbar-light .navbar-nav .nav-link{
     
     padding: 20px;
     font-size: 15px;
@@ -39,14 +70,18 @@ const Styles =styled.div `
 
 .navbar-brand{
     font-size: 25px;
-    margin: 0px 25px 0px 25px;
+    margin: 50px 0px 0px 0px;
 }
 
 img{
     border-radius: 50%;
-    margin :10px;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
+.navbar-bar{
+    margin-left: 10px;
+}
 
 `;
 
@@ -54,8 +89,8 @@ img{
 export const NavigationBar=(props)=>(
     
     <Styles>
-        <Navbar expand='lg'>
-            <Navbar.Brand href="/" >Project Zoo </Navbar.Brand>
+        <Navbar expand='lg' id="wave">
+            <Navbar.Brand href="/"><img src={'./Project Zoo.png'} alt={'logo'} style={{width:220, height:190}}/> </Navbar.Brand>
 
             <Navbar.Toggle aria-controls= "basic-navbar-nav"/>
            
