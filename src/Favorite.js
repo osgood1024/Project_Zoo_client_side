@@ -5,7 +5,6 @@ import ProjectList from './components/ProjectList'
 
 export class Favorite extends React.Component{
 
-
 /*front end way */
 // state={
 //     favorites:[]
@@ -15,7 +14,6 @@ export class Favorite extends React.Component{
     //     "user": {....},
     //     "project": {...},
     // }]
-  
 // }
 // componentDidMount(){
     // fetch('http://localhost:3000/favorites')
@@ -53,18 +51,37 @@ export class Favorite extends React.Component{
     //         favorites: allFulfilled
     //     })
     // })
-
 // }
+
+
+componentDidUpdate(prevProps,prevState){
+    console.log("PrevProps", prevProps)
+    console.log("PrevState", prevState)
+    
+    // console.log(this.props.favorites)
+    // console.log("SnapShot", snapshot)
+
+    // if(this.props.favorites !== prevState){
+    //         this.setState({
+    //             favorites: this.props.favorites
+    //         })
+    // }
+
+}
+
 
 
 
 render(){
 
-    const{category}=this.props
+    const{category, favorites}=this.props
+    console.log('here in favorite', favorites)
 
     const favorite_projects = this.props.projects.filter(project => project.favorites.some((fav)=> fav.user_id  === 1))
     const searchFilter=favorite_projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
     const search = category  === 'all' ? searchFilter : searchFilter.filter(project => project.category.toLowerCase() === category)
+    console.log("comparing favorites and search ", 'favorite',
+    favorites, 'search', search)
 
 // console.log(favorite_projects)
         return(

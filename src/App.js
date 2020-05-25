@@ -45,7 +45,7 @@ componentDidMount(){
       users: user
   })
   )
-
+  console.log("Go through here")
   fetch('http://localhost:3000/favorites')
   .then(resp => resp.json())
   .then(fav => this.setState({
@@ -146,8 +146,9 @@ handleFavorite =(ProjectId)=>{
       alert(newFav.errors)
     }
     else{
+      console.log("Setting favorites here")
       this.setState({
-        favorites: [...this.state.projects,newFav]
+        favorites: [...this.state.favorites,newFav]
         })
     }
   }
@@ -156,7 +157,7 @@ handleFavorite =(ProjectId)=>{
 
 
 handleFavoriteDel=(project_id,favorite_id)=>{
-  console.log(favorite_id)
+  console.log('handleFavoriteDel' , favorite_id, 'projectId', project_id)
     fetch(`http://localhost:3000/favorites/${favorite_id}`, {
         method: "Delete",
         headers:{
@@ -246,6 +247,7 @@ addProject=(newProject)=>{
  render(){  
 
   // console.log(this.state.projects)
+  console.log('app favorites' , this.state.favorites)
 
     return(
       

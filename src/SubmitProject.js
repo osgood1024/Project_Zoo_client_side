@@ -86,7 +86,6 @@ export class SubmitProject extends Component {
 
 
 render(){
-    console.log(this.state)
 
     const CategoryOptions=[
          {

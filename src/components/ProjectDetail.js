@@ -128,9 +128,13 @@ handleFavoriteList = () =>{
 handleDelFav=()=>{
   const{id}=this.props.project
 
-  const{handleFavoriteDel}=this.props
+  const{handleFavoriteDel, project}=this.props
+
+  console.log(project)
+  
 
   let favorite_id=this.props.project.favorites.find(f => f.user_id === 1).id
+
 
   handleFavoriteDel(id, favorite_id)
 }
