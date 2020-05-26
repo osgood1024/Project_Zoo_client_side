@@ -12,7 +12,6 @@ import styled from 'styled-components'
 // import { Toggle } from './components/Toggle'
 import { Trails } from './components/Trails'
 import { Transition, animated } from 'react-spring/renderprops'
-// import {Jumbotron} from './components/Jumbotron';
 
 // import { Jumbotron as Jumbo} from "react-bootstrap";
 
@@ -34,11 +33,24 @@ const Styles =styled.div `
 }
 
 
-
-
-// .spinner{
-//   margin: 10px
+// .jumbo{
+//     background:url(${ './wallpaper.png'}) no-repeat fixed bottom;
+//     height: 100%;
+//     margin:10px 0px 0px 0px; 
+ 
+//     background-position: center;
+//     background-color: white;
+//     background-repeat: no-repeat;
+//     background-size: cover;
 // }
+
+// .welcome{
+//   background-color: #fdfdfd;
+//   color: #fdfdfd;
+
+// }
+
+
 
 
 
@@ -99,8 +111,8 @@ const AnimatedRoute = ({ children }) => (
        
         {/* WELCOME TO PROJECT ZOO! */}
         <Trails/>
-        <Spinner name="cube-grid"  style={{margin:"22px 0px 0px 60px"}}/>
-      
+        <Spinner name="double-bounce"  color="green" style={{margin:"22px 0px 0px 60px"}}/>
+
 
           
       </div>
@@ -128,7 +140,7 @@ const AnimatedRoute = ({ children }) => (
         {/* <div className={"ball"}>
         <Animation />
         </div> */}
-       
+ 
         
         </Styles>
       </React.Fragment>
