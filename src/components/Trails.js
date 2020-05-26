@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import { render } from 'react-dom'
 import { useTrail, animated } from 'react-spring'
 
-const items = [ 'WΞLCO-M3', 'T-0','PRΦJΞCT', 'Z-00',]
+let image=<img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /> 
+const items = [ 'WΞLCO-M3 T-0 PRΦJΞCT Z-00']
+items[1]=image
+
 const config = { mass: 5, tension: 2000, friction: 200 }
 
-export function Toggle() {
+export function Trails() {
   const [toggle, set] = useState(true)
   const trail = useTrail(items.length, {
     config,
     opacity: toggle ? 1 : 0,
     x: toggle ? 0 : 20,
-    height: toggle ? 80 : 0,
+    height: toggle ? 40 : 0,
     from: { opacity: 0, x: 20, height: 0 },
   })
 
@@ -31,4 +34,4 @@ export function Toggle() {
   )
 }
 
-render(<Toggle />, document.getElementById('root'))
+render(<Trails />, document.getElementById('root'))

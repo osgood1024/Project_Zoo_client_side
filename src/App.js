@@ -7,9 +7,10 @@ import { SubmitProject } from './SubmitProject' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
 import styled from 'styled-components'
-// import{Animation} from './components/Animation'
+// import { Animation } from './components/Animation'
 // import { LogIn } from './components/LogIn' ;
-// import{Toggle} from './components/Toggle'
+// import { Toggle } from './components/Toggle'
+import { Trails } from './components/Trails'
 import { Transition, animated } from 'react-spring/renderprops'
 
 
@@ -18,7 +19,8 @@ import { Transition, animated } from 'react-spring/renderprops'
 const Styles =styled.div `
 
 .animation{
-  margin: 100px 700px;
+  margin: 100px 200px 30px 200px;
+  font-size: 25px;
 }
 
 .ball{
@@ -61,15 +63,6 @@ const AnimatedRoute = ({ children }) => (
 
 
 
-  handleToggle = (e) => {
-    this.setState({
-      show: !this.state.show
-    }
-  )
-}
-
-
-
   handleSearch=(e) =>{
     this.setState({
         searchTerm: e.target.value
@@ -90,19 +83,26 @@ const AnimatedRoute = ({ children }) => (
         <Styles>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
-      {/* <div className={"animation"} >
-      </div> */}
+      <div className={"animation"} >
+       
+        {/* WELCOME TO PROJECT ZOO! */}
+        <Trails/>
+        <img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /> 
+
+          
+      </div>
 
         <Layout>
           <AnimatedRoute>
             {location => (
      
             <Switch location={location} >
-              <Route exact path="/" render={props => <Home {...props} search={this.state.searchTerm} />} 
-              />
-              <Route path="/favorite" render={props => <Favorite {...props}search={this.state.searchTerm}/>} 
-              />
-              <Route path="/submitproject" component={SubmitProject}/>
+              
+                  <Route exact path="/" render={props => <Home {...props} search={this.state.searchTerm} />} 
+                  />
+                  <Route path="/favorite" render={props => <Favorite {...props} search={this.state.searchTerm}   />} 
+                  />
+                  <Route path="/submitproject" component={SubmitProject}/>
               
               {/* <Route path="/login" component={LogIn}/> */}
             </Switch>

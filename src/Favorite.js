@@ -1,6 +1,6 @@
 import React from 'react'
 import ProjectList from './components/ProjectList'
-import {Spring} from 'react-spring/renderprops'
+// import {Spring} from 'react-spring/renderprops'
 
 
 
@@ -213,14 +213,14 @@ render(){
 
         return(
             <>
-             <Spring
+             {/* <Spring
                 from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,-20px,20px)'}}
                 to={{opacity: 1,  transform: 'translate3d(0px,0px,0px)'}}
                 config={{delay: 500, duration:1000}}
             >
 
 {props => (
-     <div style={props}>
+     <div style={props}> */}
 
 
         {
@@ -239,9 +239,9 @@ render(){
              />
 
         }
-        </div>
+        {/* </div>
             )}
-            </Spring>      
+            </Spring>       */}
             
             </>
            

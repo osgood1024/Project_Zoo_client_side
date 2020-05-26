@@ -10,8 +10,7 @@ const Styles =styled.div `
     height: 150px;
     background-color: #222;
     padding: 8px 40px 40px 20px;
-    // border-bottom-left-radius:-50%;
-    // border-bottom-right-radius:-100%;
+  
 
 }
 
