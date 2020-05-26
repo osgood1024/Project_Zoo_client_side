@@ -179,7 +179,7 @@ render(){
         <Styles>
             <Spring
                 from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,0,0)'}}
-                to={{opacity: 1,  marginLeft:20, transform: 'translate3d(0px,0,0)'}}
+                to={{opacity: 1,  transform: 'translate3d(0px,0,0)'}}
                 config={{delay: 500, duration:500}}
             >
 
