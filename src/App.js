@@ -31,7 +31,6 @@ const Styles =styled.div `
 
 .ball{
   margin-top: 50px;
-
 }
 
 
