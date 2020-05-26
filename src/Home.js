@@ -1,5 +1,7 @@
 import React from 'react'
 import ProjectList from './components/ProjectList'
+import {Spring} from 'react-spring/renderprops'
+
 
 
 
@@ -211,6 +213,16 @@ filterProject = (category) => {
         return(
            
             <div>
+              <Spring
+                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,-20px,20px)'}}
+                to={{opacity: 1,  transform: 'translate3d(0px,0px,0px)'}}
+                config={{delay: 500, duration:1000}}
+            >
+
+{props => (
+     <div style={props}>
+
+
                <ProjectList 
                 projects={search} 
                 filterProject={this.filterProject}
@@ -223,6 +235,11 @@ filterProject = (category) => {
                 handleComment={this.handleComment}
                 handleDelComment={this.handleDelComment}
                 />
+
+
+</div>
+            )}
+            </Spring> 
             </div>
        
         )

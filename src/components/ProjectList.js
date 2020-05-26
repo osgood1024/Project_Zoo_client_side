@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ProjectDetail from './ProjectDetail'
-import {Spring} from 'react-spring/renderprops'
+// import {Spring} from 'react-spring/renderprops'
 import Select from 'react-select';
 
 
@@ -49,14 +49,14 @@ class ProjectList extends React.Component{
         return(
             <Styles >
 
-            <Spring
-                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,0,0)'}}
-                to={{opacity: 1,  transform: 'translate3d(0px,0,0)'}}
-                config={{delay: 500, duration:500}}
+            {/* <Spring
+                from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,-20px,20px)'}}
+                to={{opacity: 1,  transform: 'translate3d(0px,0px,0px)'}}
+                config={{delay: 500, duration:1000}}
             >
 
 {props => (
-     <div style={props} >
+     <div style={props} > */}
          
 
 
@@ -96,10 +96,10 @@ class ProjectList extends React.Component{
             }
             </div>
 
-    </div>
+    {/* </div>
 )}
             </Spring>
-                    
+                     */}
          </Styles>
            
         )
