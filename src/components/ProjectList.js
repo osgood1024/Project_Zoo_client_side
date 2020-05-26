@@ -53,8 +53,8 @@ class ProjectList extends React.Component{
 
             <Spring
                 from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,-20px,0)'}}
-                to={{opacity: 1,  transform: 'translate3d(0px,0,0)'}}
-                config={{delay: 600, duration:1000}}
+                to={{opacity: 1,  transform: 'translate3d(0px,0px,0)'}}
+                config={{delay: 1000, duration:1000}}
             >
 
 {props => (
@@ -91,6 +91,7 @@ class ProjectList extends React.Component{
                         handleFavoriteDel={this.props.handleFavoriteDel}
                         handleComment={this.props.handleComment}
                         handleDelComment={this.props.handleDelComment}
+                        handleDelProject={this.props.handleDelProject}
 
                         />
                         </div>

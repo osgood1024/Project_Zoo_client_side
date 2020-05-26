@@ -84,11 +84,6 @@ const AnimatedRoute = ({ children }) => (
     })
   }
 
- 
-
-
-
-
 
  render(){  
 
@@ -99,10 +94,6 @@ const AnimatedRoute = ({ children }) => (
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
-       
-
-        
-
         <img src={'./animation.gif'} alt={'animation'} style={{width:320,height:300,float:'right', margin:'0px 550px 0px 0px'}} />
         <div className={"animation"} >
        
@@ -110,8 +101,6 @@ const AnimatedRoute = ({ children }) => (
         <Trails/>
         <Spinner name="cube-grid"  style={{margin:"22px 0px 0px 60px"}}/>
       
-
-        
 
           
       </div>

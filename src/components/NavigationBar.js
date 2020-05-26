@@ -41,7 +41,7 @@ const Styles =styled.div `
     background-color:  #222;
     background:url(${ './green.jpg'}) ;
     // opacity : 1;
-    border-style:hidden;
+    // border-style:hidden;
     left: -70px;
     top: 124px;
 

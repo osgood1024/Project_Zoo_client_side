@@ -198,6 +198,30 @@ filterProject = (category) => {
           comments: comment
         })
   }
+
+
+
+  handleDelProject=(project_id)=>{
+    fetch(`http://localhost:3000/projects/${project_id}`, {
+      method: "Delete",
+      headers:{
+        "content-type" : "application/json",
+        accept : "application/json"
+      }
+  })
+  .then(resp => resp.json())
+  .then(()=> this.deleteProject(project_id))
+  }
+  
+
+  deleteProject=(project_id)=>{
+    let project=this.state.projects.filter(p => p.id !==project_id)
+    this.setState({
+      projects: project
+    })
+
+  }
+ 
   
 
 
@@ -236,6 +260,7 @@ render(){
               handleLike={this.handleLike}
               handleComment={this.handleComment}
               handleDelComment={this.handleDelComment}
+              handleDelProject={this.handleDelProject}
              />
 
         }

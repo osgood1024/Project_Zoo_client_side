@@ -58,6 +58,13 @@ p{
 }
 
 
+.card-img{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 `
 
 
@@ -124,17 +131,23 @@ handleFavoriteList = () =>{
     // })
 }
 
+handleDelProject=()=>{
+  const{id}=this.props.project
+  const{handleDelProject}=this.props
+  // let project_id=this.props.projects.find(f=> f.user_id === 1).id
+  handleDelProject(id)
+  
+}
+
 
 handleDelFav=()=>{
   const{id}=this.props.project
 
-  const{handleFavoriteDel, project}=this.props
+  const{handleFavoriteDel}=this.props
 
-  console.log(project)
-  
+  // console.log(project)
 
   let favorite_id=this.props.project.favorites.find(f => f.user_id === 1).id
-
 
   handleFavoriteDel(id, favorite_id)
 }
@@ -203,15 +216,25 @@ handleSubmit = () =>{
             
             </Button> 
 
-                {this.props.favorite ? 
-                    <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
-                    {"⭐Add to Favorite"}
-                    </Button> 
-                      :
-                    <Button style={{margin: '5px'}} variant="outline-danger" onClick={this.handleDelFav}>
-                      Remove Favorite
-                    </Button>
-                }
+            {this.props.favorite ? 
+                <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
+                {"⭐Add to Favorite"}
+                </Button> 
+                  :
+                <Button style={{margin: '5px'}} variant="outline-danger" onClick={this.handleDelFav}>
+                  Remove Favorite
+                </Button>
+            }
+
+            { this.props.project.user_id===1 &&   
+             <Button style={{margin: '5px'}} variant="outline-danger" onClick={this.handleDelProject}>
+                  Delete
+             </Button>
+             }
+
+
+
+
           </p>
 
               <p>

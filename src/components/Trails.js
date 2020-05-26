@@ -6,7 +6,7 @@ import { useTrail, animated } from 'react-spring'
 
 
 // let image=<img src={'./animation.gif'} alt={'animation'} style={{width:400, height:400}} /> 
-const items = [ `Hi Osgood!`]
+const items = [ "Hi Osgood! "]
 
 // items[1]= image
 // items[2]=<Spinner name="folding-cube" />
