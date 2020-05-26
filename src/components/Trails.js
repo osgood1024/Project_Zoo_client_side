@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import { render } from 'react-dom'
 import { useTrail, animated } from 'react-spring'
 
-let image=<img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /> 
-const items = [ 'WΞLCO-M3 T-0 PRΦJΞCT Z-00']
-items[1]=image
+// var Spinner = require('react-spinkit');
+
+
+// let image=<img src={'./animation.gif'} alt={'animation'} style={{width:400, height:400}} /> 
+const items = [ `Hi Osgood!`]
+
+// items[1]= image
+// items[2]=<Spinner name="folding-cube" />
 
 const config = { mass: 5, tension: 2000, friction: 200 }
 
 export function Trails() {
-  const [toggle, set] = useState(true)
+  const [toggle, set] = useState(false)
   const trail = useTrail(items.length, {
     config,
     opacity: toggle ? 1 : 0,

@@ -13,6 +13,8 @@ import styled from 'styled-components'
 import { Trails } from './components/Trails'
 import { Transition, animated } from 'react-spring/renderprops'
 
+var Spinner = require('react-spinkit');
+
 
 
 
@@ -27,6 +29,13 @@ const Styles =styled.div `
   margin-top: 50px;
 
 }
+
+// .spinner{
+//   margin: 10px
+// }
+
+
+
 
 `
 const Container = styled(animated.div)`
@@ -83,11 +92,15 @@ const AnimatedRoute = ({ children }) => (
         <Styles>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
+        <img src={'./animation.gif'} alt={'animation'} style={{width:320,height:300,float:'right', margin:'0px 550px 0px 0px'}} />
       <div className={"animation"} >
        
         {/* WELCOME TO PROJECT ZOO! */}
         <Trails/>
-        <img src={'./og.png'} alt={'osgood'} style={{width:50, height:40}} /> 
+        <Spinner name="cube-grid"  style={{margin:"22px 0px 0px 60px"}}/>
+      
+
+        
 
           
       </div>

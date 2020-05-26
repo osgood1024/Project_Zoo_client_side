@@ -5,6 +5,8 @@ import {Spring} from 'react-spring/renderprops'
 import Select from 'react-select';
 
 
+
+
 const Styles =styled.div `
 
 .container {
@@ -16,9 +18,9 @@ const Styles =styled.div `
   }
 
 .select{
-    margin: 0px 30px 20px 0px;
+    margin: 50px 0px 0px 30px;
     width: 200px;
-    float: right;
+    float: left;
 }
 
 
