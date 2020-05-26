@@ -3,6 +3,7 @@ import { Keyframes, animated, config } from 'react-spring/renderprops'
 
 
 const Content = Keyframes.Spring(async next => {
+    // const pic= <img src={'./Project Zoo.png'} alt={'logo'}/>
   // None of this will cause React to render, the component renders only once :-)
   while (true) {
     await next({
@@ -48,6 +49,8 @@ export  class Animation extends React.Component {
           overflow: 'hidden',
           background: 'aquamarine',
           padding: 10,
+         
+
         }}>
             
         <Content native>
