@@ -12,6 +12,10 @@ import styled from 'styled-components'
 // import { Toggle } from './components/Toggle'
 import { Trails } from './components/Trails'
 import { Transition, animated } from 'react-spring/renderprops'
+// import {Jumbotron} from './components/Jumbotron';
+
+// import { Jumbotron as Jumbo} from "react-bootstrap";
+
 
 var Spinner = require('react-spinkit');
 
@@ -29,6 +33,9 @@ const Styles =styled.div `
   margin-top: 50px;
 
 }
+
+
+
 
 // .spinner{
 //   margin: 10px
@@ -90,10 +97,15 @@ const AnimatedRoute = ({ children }) => (
       
       <React.Fragment>
         <Styles>
+
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
+       
+
+        
+
         <img src={'./animation.gif'} alt={'animation'} style={{width:320,height:300,float:'right', margin:'0px 550px 0px 0px'}} />
-      <div className={"animation"} >
+        <div className={"animation"} >
        
         {/* WELCOME TO PROJECT ZOO! */}
         <Trails/>

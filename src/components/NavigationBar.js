@@ -9,6 +9,7 @@ const Styles =styled.div `
 .navbar{
     height: 150px;
     background-color: #222;
+    background:url(${ './green.jpg'});
     padding: 8px 40px 40px 20px;
   
 
@@ -35,6 +36,7 @@ const Styles =styled.div `
     width: 799px;
     height: 70px;
     background-color:  #222;
+    background:url(${ './green.jpg'});
     left: -70px;
     top: 124px;
 
