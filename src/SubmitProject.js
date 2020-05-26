@@ -173,6 +173,11 @@ render(){
 
     ]
 
+
+
+
+    const{name,category,image,link,description}=this.state
+
    
 
     return(
@@ -190,7 +195,7 @@ render(){
             <Form inverted  onSubmit={this.handleSubmit}>
 
                 <Form.Group widths='equal'>
-                    <Form.Input fluid label='Project Name:' placeholder='what is your project topic?' name='name' value={this.state.name} onChange={this.handleChange} />
+                    <Form.Input fluid label='Project Name:' placeholder='what is your project topic?' name='name' value={name} onChange={this.handleChange} />
                 </Form.Group>
                 
                 <p>Category:</p>
@@ -198,7 +203,7 @@ render(){
                 selection
                 search
                 options ={CategoryOptions}
-                value={this.state.category} 
+                value={category} 
                 onChange={this.handleCategory}
                 />
 
@@ -206,15 +211,15 @@ render(){
 
                     {/* <Form.Input fluid label='# Tag :' placeholder='#todolist #react #web_dev....' /> */}
                 <Form.Group widths="grouped">
-                    <Form.Input fluid label='Website live link or Github Repo:' placeholder='your project link/ Github repo..' name='link' value={this.state.link} onChange={this.handleChange}/>
+                    <Form.Input fluid label='Website live link or Github Repo:' placeholder='your project link/ Github repo..' name='link' value={link} onChange={this.handleChange}/>
                 </Form.Group>
                 <Form.Group widths="grouped">
-                    <Form.Input fluid label='Picture for project: ' placeholder='copy image address' name='image' value={this.state.image} onChange={this.handleChange}/>
+                    <Form.Input fluid label='Picture for project: ' placeholder='copy image address' name='image' value={image} onChange={this.handleChange}/>
                 </Form.Group>
 
                 <p>Description:</p>
                 <Form.Group widths ="grouped">
-                <TextArea  placeholder='Tell us more' name='description' value={this.state.description} onChange={this.handleChange}/>
+                <TextArea  placeholder='Tell us more' name='description' value={description} onChange={this.handleChange}/>
                 </Form.Group>
 
             

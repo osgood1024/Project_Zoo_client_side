@@ -225,9 +225,9 @@ filterProject = (category) => {
  
 
     render(){
-        const {category} = this.state;
+        const {category,projects,comments,users,favorites} = this.state;
 
-        const searchFilter = this.state.projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
+        const searchFilter = projects.filter(p => p.name.toLowerCase().includes(this.props.search.toLowerCase()))
         
         const search = category  === 'all' ? searchFilter : searchFilter.filter(project => project.category.toLowerCase() === category)
         
@@ -247,9 +247,9 @@ filterProject = (category) => {
                <ProjectList 
                 projects={search} 
                 filterProject={this.filterProject}
-                favorites={this.state.favorites}
-                comments={this.state.comments}
-                users={this.state.users}
+                favorites={favorites}
+                comments={comments}
+                users={users}
                 handleLike={this.handleLike}
                 handleFavorite={this.handleFavorite}
                 handleFavoriteDel={this.handleFavoriteDel}
