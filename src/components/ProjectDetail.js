@@ -134,9 +134,7 @@ handleFavoriteList = () =>{
 handleDelProject=()=>{
   const{id}=this.props.project
   const{handleDelProject}=this.props
-  // let project_id=this.props.projects.find(f=> f.user_id === 1).id
   handleDelProject(id)
-  
 }
 
 
@@ -144,8 +142,6 @@ handleDelFav=()=>{
   const{id}=this.props.project
 
   const{handleFavoriteDel}=this.props
-
-  // console.log(project)
 
   let favorite_id=this.props.project.favorites.find(f => f.user_id === 1).id
 
@@ -164,8 +160,7 @@ handleChange=(e)=>{
 handleSubmit = () =>{
   const{id}=this.props.project
   const{handleComment}=this.props
-  
-  console.log(this.state.description)
+
   handleComment(1,id,this.state.description)
 
   this.setState({
@@ -175,13 +170,11 @@ handleSubmit = () =>{
 
 
     render(){
-      const {project} = this.props;
-      const {setModalShow} = this.state;
-    
+      const {project,favorite,comment,handleDelComment,users} = this.props;
+      const {setModalShow,description,toggle} = this.state;
   
-      let userName= this.props.users.filter(u => u.id === project.user_id).map(u => u.username)  
+      let userName= users.filter(u => u.id === project.user_id).map(u => u.username)  
 
-      
       
         return(
           <>
@@ -203,7 +196,7 @@ handleSubmit = () =>{
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                {this.props.project.name}
+                {project.name}
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -212,11 +205,11 @@ handleSubmit = () =>{
 
             <Button style={{margin: '5px'}} onClick={this.handleLikes} variant="outline-dark" > 
 
-             {this.state.toggle ? "❤ Like" : "Unlike"}
+             {toggle ? "❤ Like" : "Unlike"}
             
             </Button> 
 
-            {this.props.favorite ? 
+            { favorite ? 
                 <Button variant="outline-dark" onClick={this.handleFavoriteList}> 
                 {"⭐Add to Favorite"}
                 </Button> 
@@ -226,7 +219,7 @@ handleSubmit = () =>{
                 </Button>
             }
 
-            { this.props.project.user_id===1 &&   
+            { project.user_id===1 &&   
              <Button style={{margin: '5px', float:"right"}} variant="outline-danger" onClick={this.handleDelProject}>
                   Delete Project
              </Button>
@@ -238,23 +231,23 @@ handleSubmit = () =>{
           </p>
 
               <p>
-                <Image src={this.props.project.image} fluid />
+                <Image src={project.image} fluid />
               </p>
 
     
               <p className={"description"}>
-                {this.props.project.description}
+                {project.description}
               </p>
 
               <p>
-                  Like: {"❤ "+this.props.project.like} 
+                  Like: {"❤ "+ project.like} 
               </p>
               <p>
                   Owner: {userName}
               </p>
 
               <p>
-                <a href = {this.props.project.link} target= "_blank" rel="noopener noreferrer" >
+                <a href = {project.link} target= "_blank" rel="noopener noreferrer" >
                   Visit Project
                 </a>
               </p>
@@ -263,7 +256,7 @@ handleSubmit = () =>{
 
           <h4>Discussion</h4>
           
-          <Form.Control as="textarea" rows="3" name="description" value={this.state.description} onChange={this.handleChange} placeholder="What are your thought in this project? "/>
+          <Form.Control as="textarea" rows="3" name="description" value={description} onChange={this.handleChange} placeholder="What are your thought in this project? "/>
           <br/>
           <Button variant="outline-dark"  className="rounded-pill" style={{float: 'right'}} type="submit" onClick={this.handleSubmit} >Post a Comment </Button>
           <br/>
@@ -271,11 +264,11 @@ handleSubmit = () =>{
 
 
 
-          <CommentList comments={this.props.comment.map(c => 
+          <CommentList comments={comment.map(c => 
             
           <p> 
             {c.user.username === "Osgood" &&
-          <Button type="button" className="close" aria-label="Close" onClick={()=>this.props.handleDelComment(c.id)}>
+          <Button type="button" className="close" aria-label="Close" onClick={()=>handleDelComment(c.id)}>
             <span aria-hidden="true">&times;</span>
           </Button>
           }

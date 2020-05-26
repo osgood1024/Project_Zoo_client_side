@@ -48,6 +48,9 @@ class ProjectList extends React.Component{
             { value: 'all', label: 'All' },
           ];
 
+          const{handleLike,handleComment,handleFavorite,handleFavoriteDel,handleDelComment,handleDelProject,filterProject,
+            favorites,users,projects,comments}=this.props
+
         return(
             <Styles >
 
@@ -68,7 +71,7 @@ class ProjectList extends React.Component{
         <Select 
         defaultValue={options[10]}
         options={options}
-        onChange={(e) =>  this.props.filterProject(e.value) }
+        onChange={(e) =>  filterProject(e.value) }
         />
 
 
@@ -76,22 +79,22 @@ class ProjectList extends React.Component{
 
 
             <div className={'container'}>
-            {this.props.projects.map(project => <div style={{padding:'0px', margin:"50px 10px 10px 10px"}}>
+            {projects.map(project => <div style={{padding:'0px', margin:"50px 10px 10px 10px"}}>
 
                      
                         <ProjectDetail 
 
                         key={project.id} 
-                        favorite={this.props.favorites}
-                        users={this.props.users}
+                        favorite={favorites}
+                        users={users}
                         project={project}
-                        comment={this.props.comments.filter(c => c.project_id === project.id)} 
-                        handleLike={this.props.handleLike}
-                        handleFavorite={this.props.handleFavorite}
-                        handleFavoriteDel={this.props.handleFavoriteDel}
-                        handleComment={this.props.handleComment}
-                        handleDelComment={this.props.handleDelComment}
-                        handleDelProject={this.props.handleDelProject}
+                        comment={comments.filter(c => c.project_id === project.id)} 
+                        handleLike={handleLike}
+                        handleFavorite={handleFavorite}
+                        handleFavoriteDel={handleFavoriteDel}
+                        handleComment={handleComment}
+                        handleDelComment={handleDelComment}
+                        handleDelProject={handleDelProject}
 
                         />
                         </div>
