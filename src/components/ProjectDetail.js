@@ -227,8 +227,8 @@ handleSubmit = () =>{
             }
 
             { this.props.project.user_id===1 &&   
-             <Button style={{margin: '5px'}} variant="outline-danger" onClick={this.handleDelProject}>
-                  Delete
+             <Button style={{margin: '5px', float:"right"}} variant="outline-danger" onClick={this.handleDelProject}>
+                  Delete Project
              </Button>
              }
 
