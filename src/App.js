@@ -34,6 +34,7 @@ import { NavigationBar } from './components/NavigationBar';
       
       <React.Fragment>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
+      
         <Layout>
         
             <Switch >
@@ -48,6 +49,7 @@ import { NavigationBar } from './components/NavigationBar';
 
       
         </Layout>
+       
         
       </React.Fragment>
       

@@ -51,7 +51,7 @@ class ProjectList extends React.Component{
 
             <Spring
                 from={{opacity: 0 ,  marginLeft:-20 , transform: 'translate3d(-20px,0,0)'}}
-                to={{opacity: 1,  marginLeff:20, transform: 'translate3d(0px,0,0)'}}
+                to={{opacity: 1,  marginLeft:20, transform: 'translate3d(0px,0,0)'}}
                 config={{delay: 500, duration:500}}
             >
 
@@ -59,15 +59,16 @@ class ProjectList extends React.Component{
      <div style={props} >
          
 
+
 <div className={"select"}>
     
-
+   <p> Filter By:</p>
         <Select 
-        placeholder="Filter by..."
-        // defaultValue={options[10]}
+        defaultValue={options[10]}
         options={options}
         onChange={(e) =>  this.props.filterProject(e.value) }
         />
+
 
 </div>
 
@@ -77,6 +78,7 @@ class ProjectList extends React.Component{
 
                      
                         <ProjectDetail 
+
                         key={project.id} 
                         favorite={this.props.favorites}
                         users={this.props.users}
