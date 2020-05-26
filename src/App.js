@@ -7,6 +7,17 @@ import { SubmitProject } from './SubmitProject' ;
 import { LogIn } from './components/LogIn' ;
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
+import styled from 'styled-components'
+import{Animation} from './components/Animation'
+
+
+const Styles =styled.div `
+
+.animation{
+  margin-top: 50px;
+}
+
+`
 
 
 
@@ -33,10 +44,16 @@ import { NavigationBar } from './components/NavigationBar';
     return(
       
       <React.Fragment>
+        <Styles>
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
-      
+
+        <div className={"animation"}>
+
+           <Animation />
+        </div>
+
         <Layout>
-        
+     
             <Switch >
               <Route exact path="/" render={props => <Home {...props} search={this.state.searchTerm} />} 
               />
@@ -51,9 +68,9 @@ import { NavigationBar } from './components/NavigationBar';
         </Layout>
        
         
+        </Styles>
       </React.Fragment>
       
-
     )}
 
 }

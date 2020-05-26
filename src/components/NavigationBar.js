@@ -109,6 +109,11 @@ export const NavigationBar=(props)=>(
                 </Nav>
             </Navbar.Collapse>
 
+            
+
         </Navbar>
+
+
+
     </Styles>
 )
