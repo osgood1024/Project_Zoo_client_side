@@ -199,7 +199,13 @@ handleSubmit = () =>{
           >
             <Modal.Header closeButton>
               <Modal.Title id="contained-modal-title-vcenter">
-                {project.name}
+                <h3>
+                  <strong>
+                  {project.name}
+                  </strong>
+
+                </h3>
+
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -293,13 +299,9 @@ handleSubmit = () =>{
           </Button>
           }
 
-          
-
           <h5>@{c.user.username}:</h5> 
 
-          
           {c.content}
-
           <hr/> 
 
           </p> 

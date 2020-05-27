@@ -33,22 +33,7 @@ const Styles =styled.div `
 }
 
 
-// .jumbo{
-//     background:url(${ './wallpaper.png'}) no-repeat fixed bottom;
-//     height: 100%;
-//     margin:10px 0px 0px 0px; 
- 
-//     background-position: center;
-//     background-color: white;
-//     background-repeat: no-repeat;
-//     background-size: cover;
-// }
 
-// .welcome{
-//   background-color: #fdfdfd;
-//   color: #fdfdfd;
-
-// }
 
 
 
@@ -129,7 +114,7 @@ const AnimatedRoute = ({ children }) => (
                   />
                   <Route path="/submitproject" component={SubmitProject}/>
               
-              {/* <Route path="/login" component={LogIn}/> */}
+             
             </Switch>
             )}
           </AnimatedRoute>
