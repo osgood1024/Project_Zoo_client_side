@@ -12,6 +12,7 @@ const Styles =styled.div `
 
 .card{    
   border-radius: 15px;
+  border-style: ridge;
 }
 
 .card:hover{
@@ -63,6 +64,8 @@ p{
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
 
 
 `
@@ -234,27 +237,44 @@ handleSubmit = () =>{
                 <Image src={project.image} fluid />
               </p>
 
-    
-              <p className={"description"}>
-                {project.description}
-              </p>
+              <hr/>
 
-              <p>
-                  Like: {"❤ "+ project.like} 
-              </p>
-              <p>
-                  Owner: {userName}
-              </p>
+              <h3><strong>About</strong></h3>
+          
+                <p style={{padding: '10px 0px 0px 0px'}}>
+                  {project.description}
+                </p>
+            
+              
+             <hr/>
+             <br/>
+                  <p style={{padding: '0px 0px 0px 10px'}}>
 
-              <p>
-                <a href = {project.link} target= "_blank" rel="noopener noreferrer" >
-                  Visit Project
-                </a>
-              </p>
+                    <h5>
+                        Like: {"❤ "+ project.like}
+                    </h5>
+
+                  </p>
+
+                  <p style={{padding: '0px 0px 0px 10px'}}>
+
+                    <h5>
+                        Owner: {userName}
+                    </h5>
+
+                  </p>
+              <br/>
+                  <p style={{padding: '0px 0px 0px 10px'}}>
+                    <a href = {project.link} target= "_blank" rel="noopener noreferrer" >
+                      <h5>
+                      Visit Project
+                      </h5>
+                    </a>
+                  </p>
      
 <br/>
 
-          <h4>Discussion</h4>
+          <h4> <strong>Discussion</strong></h4>
           
           <Form.Control as="textarea" rows="3" name="description" value={description} onChange={this.handleChange} placeholder="What are your thought in this project? "/>
           <br/>
@@ -273,9 +293,14 @@ handleSubmit = () =>{
           </Button>
           }
 
+          
+
           <h5>@{c.user.username}:</h5> 
 
-          {c.content}<hr /> 
+          
+          {c.content}
+
+          <hr/> 
 
           </p> 
           )

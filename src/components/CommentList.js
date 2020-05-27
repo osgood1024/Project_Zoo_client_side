@@ -9,16 +9,18 @@ import React from "react"
      return(
 
         <div>
-       
 
             <h4>
+                <strong>
+
                 Response(s):
+                </strong>
             </h4>
             <hr/>
-        
+            
+        <p >
              {props.comments}
-
-
+        </p>
 
       </div>
    
