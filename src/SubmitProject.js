@@ -72,7 +72,7 @@ export class SubmitProject extends Component {
 
     handleSubmit=(e) =>{
         e.preventDefault()
-        fetch('http://localhost:3000/projects',{
+        fetch('https://stark-sierra-95307.herokuapp.com/projects',{
             method: "POST",
             headers:{
               "content-type" : "application/json",
