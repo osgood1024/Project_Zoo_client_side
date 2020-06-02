@@ -19,28 +19,28 @@ export class Home extends React.Component{
 
  componentDidMount(){
      
-    fetch('http://localhost:3000/projects')
+    fetch('https://stark-sierra-95307.herokuapp.com/projects')
         .then(resp => resp.json())
         .then(data => this.setState({
             projects: data
         })
         )
 
-    fetch('http://localhost:3000/comments')
+    fetch('https://stark-sierra-95307.herokuapp.com/comments')
         .then(resp => resp.json())
         .then(commented => this.setState({
             comments: commented
         })
         )
 
-    fetch('http://localhost:3000/users')
+    fetch('https://stark-sierra-95307.herokuapp.com/users')
         .then(resp=>resp.json())
         .then(user => this.setState({
             users: user
         })
         )
 
-    fetch('http://localhost:3000/favorites')
+    fetch('https://stark-sierra-95307.herokuapp.com/favorites')
         .then(resp => resp.json())
         .then(fav => this.setState({
             favorites : fav
@@ -58,7 +58,7 @@ filterProject = (category) => {
   
   handleLike = (id,newLike) => {
   
-    fetch(` http://localhost:3000/projects/${id}`, {
+    fetch(` https://stark-sierra-95307.herokuapp.com/projects/${id}`, {
       method: "PATCH",
       headers:{
         "content-type" : "application/json",
@@ -102,7 +102,7 @@ filterProject = (category) => {
   
   handleFavorite =(ProjectId)=>{
   
-    fetch(`http://localhost:3000/favorites`, {
+    fetch(`https://stark-sierra-95307.herokuapp.com/favorites`, {
       method: "POST",
       headers:{
         "content-type" : "application/json",
@@ -129,7 +129,7 @@ filterProject = (category) => {
   
   handleFavoriteDel=(project_id,favorite_id)=>{
     // console.log('handleFavoriteDel' , favorite_id, 'projectId', project_id)
-      fetch(`http://localhost:3000/favorites/${favorite_id}`, {
+      fetch(`https://stark-sierra-95307.herokuapp.com/favorites/${favorite_id}`, {
           method: "Delete",
           headers:{
             "content-type" : "application/json",
@@ -151,7 +151,7 @@ filterProject = (category) => {
   
   handleComment=(user_id,ProjectId,newcontent)=>{
   
-      fetch('http://localhost:3000/comments', {
+      fetch('https://stark-sierra-95307.herokuapp.com/comments', {
         method: "POST",
           headers:{
             "content-type" : "application/json",
@@ -180,7 +180,7 @@ filterProject = (category) => {
   
   
   handleDelComment=(cid) =>{
-      fetch(`http://localhost:3000/comments/${cid}`, {
+      fetch(`https://stark-sierra-95307.herokuapp.com/comments/${cid}`, {
       method: "Delete",
       headers:{
       "content-type" : "application/json",
@@ -203,7 +203,7 @@ filterProject = (category) => {
 
 
   handleDelProject=(project_id)=>{
-    fetch(`http://localhost:3000/projects/${project_id}`, {
+    fetch(`https://stark-sierra-95307.herokuapp.com/projects/${project_id}`, {
       method: "Delete",
       headers:{
         "content-type" : "application/json",
