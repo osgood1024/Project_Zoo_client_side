@@ -6,14 +6,18 @@ This is a website where you can find project ideas or share your projects with t
 
 
 ## Inspiration 
-The designs and projects inspired by 
+The designs inspired by  
 - [behance](https://www.behance.net/)
-- dribbble
-- product hunt (https://www.producthunt.com/)
-- 7days7websites 
+- [dribbble](https://dribbble.com/)
+
+I do not own all of this projects. Some of the projects were pulledfrom: 
+- [product hunt](https://www.producthunt.com/)
+- [7days7websites](https://7days7websites.glitch.me/#submissions) 
+- [DevHacks](https://devhacks.deta.dev/projects)
+- Honorary Mentions:[awwwards](https://www.awwwards.com/) and Google searches  
 
 
 
-**Note: **
+//**Note: **
 
 
