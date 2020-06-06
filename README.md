@@ -18,6 +18,10 @@ I do not own all of this projects. Some of the projects were pulledfrom:
 
 
 
-//**Note: **
+## Contact
+-[linkedIn](https://www.linkedin.com/in/osgood-gunawan-973a5993/)
+-[personal website](https://www.osgoodgunawan.me/)
+-[twitter](https://twitter.com/osgoodgunawan)
+-[email](https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=osgoodgunawan@hotmail.com)
 
 
