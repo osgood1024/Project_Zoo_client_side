@@ -1,7 +1,5 @@
 # Project Zoo
 
-![project zoo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/animation.gif)
-
 <p align="center">
   <img src="https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/animation.gif"/>
 </p>
@@ -9,7 +7,7 @@
 ## Decscription 
 This is a website where you can find project ideas or share your projects with the platform. The concept of this project came from my problem. I had difficulty or lack of resources to find new project topic ideas to work on. For that reason, I decided to create a website where people can browse around to check other people's projects or contribute their projects to the site.
 
-<img src="https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/wesbite2.png" float=left>
+<img src="https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/wesbite2.png" float="left">
 
 
 ## Live Demo
