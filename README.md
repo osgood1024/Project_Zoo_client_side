@@ -7,11 +7,11 @@ This is a website where you can find project ideas or share your projects with t
 Check out the live demo [Project Zoo](https://theprojectzoo.netlify.app/)
 
 ## Inspiration 
-The designs inspired by  
+The website designs inspired by  
 - [behance](https://www.behance.net/)
 - [dribbble](https://dribbble.com/)
 
-I do not own all of this projects. Some of the projects were pulled from: 
+I do not own all of this projects. Some of the projects were from: 
 - [product hunt](https://www.producthunt.com/)
 - [7days7websites](https://7days7websites.glitch.me/#submissions) 
 - [DevHacks](https://devhacks.deta.dev/projects)
