@@ -14,8 +14,12 @@ This is a website where you can find project ideas or share your projects with t
 - Check out the live demo [Project Zoo](https://theprojectzoo.netlify.app/)
 - Video demo coming soon...
 
+
+**Note:The website design meant to be in MacBook Pro 13.**
+
 ## Prerequisites
 - [Back End Repo](https://github.com/osgoodgunawan/Final-Project-BackEnd)
+
 
 ## Inspiration 
 The website's design inspired by  
