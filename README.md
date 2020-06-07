@@ -5,9 +5,10 @@ This is a website where you can find project ideas or share your projects with t
 
 ## Live Demo
 Check out the live demo [Project Zoo](https://theprojectzoo.netlify.app/)
+video demo coming soon...
 
 ## Inspiration 
-The website designs inspired by  
+The website's design inspired by  
 - [behance](https://www.behance.net/)
 - [dribbble](https://dribbble.com/)
 
