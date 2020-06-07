@@ -15,7 +15,7 @@ This is a website where you can find project ideas or share your projects with t
 - Video demo coming soon...
 
 
-**Note:The website design meant to be in MacBook Pro 13.**
+**Note: The website design meant to be in MacBook Pro 13 (12.35 x 8.62).**
 
 ## Prerequisites
 - [Back End Repo](https://github.com/osgoodgunawan/Final-Project-BackEnd)
