@@ -1,7 +1,7 @@
 
 
 
-![project zoo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/animation.gif)
+![project zoo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/animation.gif = 250x250)
 
 
 ## Decscription 
