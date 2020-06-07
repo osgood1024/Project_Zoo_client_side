@@ -6,7 +6,7 @@
 This is a website where you can find project ideas or share your projects with the platform. The concept of this project came from my problem. I had difficulty or lack of resources to find new project topic ideas to work on. For that reason, I decided to create a website where people can browse around to check other people's projects or contribute their projects to the site.
 
 
-![website demo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/website1.png =250x250)
+![website demo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/website1.png=250x250)
 
 ## Live Demo
 - Check out the live demo [Project Zoo](https://theprojectzoo.netlify.app/)
