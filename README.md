@@ -1,7 +1,7 @@
 
 
 
-![project zoo](/public/animaton.gif)
+![project zoo](/animaton.gif)
 
 
 ## Decscription 
