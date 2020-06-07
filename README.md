@@ -23,7 +23,7 @@ I do not own all of this projects. Some of the projects were from:
 - [product hunt](https://www.producthunt.com/)
 - [7days7websites](https://7days7websites.glitch.me/#submissions) 
 - [DevHacks](https://devhacks.deta.dev/projects)
-- Honorary Mentions:[awwwards](https://www.awwwards.com/) and Google searches  
+- Honorary Mentions: [awwwards](https://www.awwwards.com/) and Google searches  
 
 ## Contact
 - [linkedIn](https://www.linkedin.com/in/osgood-gunawan-973a5993/)
