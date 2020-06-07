@@ -1,7 +1,7 @@
 
 
 
-![project zoo](/animaton.gif)
+![project zoo](https://github.com/osgoodgunawan/Final-Project-FrontEnd/blob/master/public/animation.gif)
 
 
 ## Decscription 
