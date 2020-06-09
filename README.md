@@ -12,7 +12,7 @@ This is a website where you can find project ideas or share your projects with t
 
 ## Live Demo
 - Check out the live demo [Project Zoo](https://theprojectzoo.netlify.app/)
-- Video demo coming soon...
+- Check out the [video demo](https://www.youtube.com/watch?v=bXpsp-2DubA)
 
 **Note: The website design meant to be in MacBook Pro 13 (12.35 x 8.62).**
 
