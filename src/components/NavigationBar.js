@@ -11,41 +11,38 @@ const Styles =styled.div `
     background-color: #222;
     background:url(${ './green.jpg'}) ;
     padding: 8px 40px 40px 20px;
-    
 
+}
+
+// .navbar:before{
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     border-radius: 100% 50%;
+//     width: 761px;
+//     height: 80px;
+//     background-color: white;
+//     right: -49px;
+//     top: 100px;
   
 
-}
+// }
 
-.navbar:before{
-    content: "";
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 761px;
-    height: 80px;
-    background-color: white;
-    right: -49px;
-    top: 100px;
-    // opacity : 1;
+// .navbar:after{
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     border-radius: 100% 50%;
+//     width: 799px;
+//     height: 70px;
+//     background-color:  #222;
+//     background:url(${ './green.jpg'}) ;
+//     // opacity : 1;
+//     // border-style:hidden;
+//     left: -70px;
+//     top: 124px;
 
-}
-
-.navbar:after{
-    content: "";
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 799px;
-    height: 70px;
-    background-color:  #222;
-    background:url(${ './green.jpg'}) ;
-    // opacity : 1;
-    // border-style:hidden;
-    left: -70px;
-    top: 124px;
-
-}
+// }
 
 
 

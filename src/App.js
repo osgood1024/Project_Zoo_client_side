@@ -34,12 +34,6 @@ const Styles =styled.div `
 
 
 
-
-
-
-
-
-
 `
 const Container = styled(animated.div)`
   
@@ -133,11 +127,6 @@ const AnimatedRoute = ({ children }) => (
     )}
 
 }
-
-
-
-
-
 
 
 
