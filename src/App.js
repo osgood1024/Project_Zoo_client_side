@@ -32,6 +32,10 @@ const Styles =styled.div `
   margin-top: 50px;
 }
 
+.about{
+  font-family: 'Rowdies', cursive;
+  text-align: center;
+}
 
 
 `
@@ -84,7 +88,11 @@ const AnimatedRoute = ({ children }) => (
         <Styles>
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
-        {/* <h2> A place where you can find project ideas or share your projects</h2> */}
+        
+        <div className={'about'}>
+          <h2> A place where you can find project ideas or share your projects</h2>
+        </div>
+          
 
         <img src={'./animation.gif'} alt={'animation'} style={{width:320,height:300,float:'right', margin:'0px 550px 0px 0px'}} />
         <div className={"animation"} >
