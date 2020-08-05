@@ -27,9 +27,6 @@ const Styles =styled.div `
 `
 
 
-
-
-
 class ProjectList extends React.Component{
 
     

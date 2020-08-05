@@ -83,8 +83,6 @@ p{
 
 
 
-
-
 onClose = (e) => {
  this.setState({
    setModalShow : false

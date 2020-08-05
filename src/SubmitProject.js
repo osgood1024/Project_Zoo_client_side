@@ -46,8 +46,6 @@ export class SubmitProject extends Component {
 
     }
 
-
-
       
     
     handleChange=(e)=>{

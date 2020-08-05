@@ -3,9 +3,6 @@ import ProjectList from './components/ProjectList'
 // import {Spring} from 'react-spring/renderprops'
 
 
-
-
-
 export class Home extends React.Component{
 
 
