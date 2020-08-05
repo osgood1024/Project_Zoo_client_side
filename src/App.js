@@ -33,7 +33,6 @@ const Styles =styled.div `
 }
 
 .about{
-  // font-family: 'Rowdies', cursive;
   text-align: center;
   padding: 50px;
 }
