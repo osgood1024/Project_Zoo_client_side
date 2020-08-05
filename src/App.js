@@ -90,7 +90,7 @@ const AnimatedRoute = ({ children }) => (
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
-        <div className={'about'}>
+        <div className={'about'} style={{ "font-family: 'Rowdies', cursive;"}}>
           <h2> A place where you can find project ideas or share your projects</h2>
         </div>
           
