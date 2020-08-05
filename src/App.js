@@ -35,6 +35,7 @@ const Styles =styled.div `
 .about{
   font-family: 'Rowdies', cursive;
   text-align: center;
+  padding: 50px;
 }
 
 
@@ -88,7 +89,7 @@ const AnimatedRoute = ({ children }) => (
         <Styles>
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
-        
+
         <div className={'about'}>
           <h2> A place where you can find project ideas or share your projects</h2>
         </div>
