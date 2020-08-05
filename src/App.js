@@ -84,7 +84,7 @@ const AnimatedRoute = ({ children }) => (
         <Styles>
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
-        <h2> A place where you can find project ideas or share your projects</h2>
+        {/* <h2> A place where you can find project ideas or share your projects</h2> */}
 
         <img src={'./animation.gif'} alt={'animation'} style={{width:320,height:300,float:'right', margin:'0px 550px 0px 0px'}} />
         <div className={"animation"} >

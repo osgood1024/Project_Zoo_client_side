@@ -10,7 +10,7 @@ const Styles =styled.div `
     height: 150px;
     background-color: #222;
     background:url(${ './green.jpg'}) ;
-    padding: 8px 40px 40px 20px;
+    padding: 8px 20px 8px 20px;
 
 }
 
