@@ -33,9 +33,13 @@ const Styles =styled.div `
 }
 
 .about{
-  font-family: 'Rowdies', cursive;
+  // font-family: 'Rowdies', cursive;
   text-align: center;
   padding: 50px;
+}
+
+h2{
+  font-family: 'Rowdies', cursive;
 }
 
 
@@ -90,7 +94,7 @@ const AnimatedRoute = ({ children }) => (
 
         <NavigationBar handleSearch={this.handleSearch} search={this.state.searchTerm} />
 
-        <div className={'about'} style={{ "font-family: 'Rowdies', cursive;"}}>
+        <div className={'about'}>
           <h2> A place where you can find project ideas or share your projects</h2>
         </div>
           
