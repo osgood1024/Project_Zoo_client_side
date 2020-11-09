@@ -116,7 +116,7 @@ filterProject = (category) => {
         alert(newFav.errors)
       }
       else{
-        console.log("Setting favorites here")
+        // console.log("Setting favorites here")
         this.setState({
           favorites: [...this.state.favorites,newFav]
           })
@@ -153,7 +153,7 @@ filterProject = (category) => {
         method: "POST",
           headers:{
             "content-type" : "application/json",
-            accept : "application/json"
+            "accept" : "application/json"
           },
           body: JSON.stringify({
             user_id: user_id,
