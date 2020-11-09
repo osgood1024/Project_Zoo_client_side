@@ -106,7 +106,6 @@ else{
 }
 
   this.setState({
-
     toggle :!this.state.toggle
   })
 }

@@ -67,7 +67,6 @@ filterProject = (category) => {
   })
     .then(resp => resp.json())
     .then(updatedProject =>  this.addLike(updatedProject)) 
-  
   }
   
   
